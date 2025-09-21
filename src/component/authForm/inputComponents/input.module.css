@@ -1,0 +1,27 @@
+.input_data_container{
+    display: flex;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+
+    margin: 10px 0;
+    height: 47px;
+
+    &:focus-within{
+        border: 2px solid #1032d6;
+    }
+}
+
+.input_data{
+    border: none;
+    padding: 10px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.eye_image_pass{
+    height: 35px;
+    width: 35px;
+    margin: 5px 10px;
+}

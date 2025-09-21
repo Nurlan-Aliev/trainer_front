@@ -1,0 +1,15 @@
+.submit_button{
+    font-size: 20px;
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    border-radius: 7px;
+    transition: 0.5s;
+    color: white;
+    background-color: rgb(88, 129, 224);
+    margin: 10px 0;
+
+    &:active{
+        transform: scale(0.92);
+    }
+}
