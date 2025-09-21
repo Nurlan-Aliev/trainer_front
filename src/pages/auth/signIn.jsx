@@ -4,7 +4,7 @@ import {SubmitButton} from "../../component/authForm/button/submitButton";
 import {InputData} from "../../component/authForm/inputComponents/inputComponent";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {sendAuthRequest} from "./utils";
+import {sendRequest} from "../../utils";
 import settings from "../../config";
 
 
@@ -17,7 +17,7 @@ export function SignIn(){
     const handleSubmit = async (e) =>{
         e.preventDefault();
 
-        const result = await sendAuthRequest(
+        const result = await sendRequest(
             `${settings.baseURL}/auth/login`,
             {'login': login, 'password':password});
 

@@ -1,4 +1,4 @@
-export async function sendAuthRequest (url, data){
+export async function sendRequest (url, data){
 
     const formData = new FormData();
     for (const key in data){

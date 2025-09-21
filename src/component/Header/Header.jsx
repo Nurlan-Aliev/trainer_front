@@ -9,18 +9,13 @@ export function Header() {
 
     useEffect(() => {
         const checkAuth = async () => {
-            console.log(settings.baseURL)
             try {
                 const response = await fetch(`${settings.baseURL}/auth/me`, {
-                    method: "POST",
                     credentials: "include",
                 });
 
                 if (response.ok) {
-                    const data = await response.json(); // вот тут мы уже используем await
                     setUser(true);
-                    console.log("response ok", data);
-
                 } else {
                     setUser(false);
                 }
@@ -28,8 +23,6 @@ export function Header() {
                 console.error(e);
             }
         };
-
-        // вот тут ты вызываешь функцию
         checkAuth();
     }, []);
 
