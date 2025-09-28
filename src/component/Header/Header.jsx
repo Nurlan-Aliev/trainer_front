@@ -1,49 +1,26 @@
 import styles from './header.module.css';
-import settings from "../../config";
-import {useEffect, useState} from "react";
-
+import UserButton from "../userButton/userButton";
+import {Link} from "react-router-dom";
 
 export function Header() {
-    const [user, setUser] = useState(false);
-    // это костыль Нурлна убери это потом
 
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const response = await fetch(`${settings.baseURL}/auth/me`, {
-                    credentials: "include",
-                });
-
-                if (response.ok) {
-                    setUser(true);
-                } else {
-                    setUser(false);
-                }
-            } catch (e) {
-                console.error(e);
-            }
-        };
-        checkAuth();
-    }, []);
-
+    const token = localStorage.getItem("access_token");
 
 
     return <header>
         <h2><a href="/">Trainer</a></h2>
-        { user ?
+        { token ?
             <>
                 <div className={styles.menu}>
-                    <div><a href="/learn">Learn word</a></div>
+                    <div><Link to="/learn">Learn word</Link></div>
                     <div><a href="/train_list">Train</a></div>
                 </div>
-                <a href="/auth/sign_out">
-                    <img src="/public/images/user.png" alt="" className={styles.user_icon}/>
-                </a>
+                <UserButton/>
             </>
         :
-            <a href="/sign_in" className={styles.sign_in}>
+            <Link to="/sign_in" className={styles.sign_in}>
                 Sign In
-            </a>
+            </Link>
 
         }
     </header>

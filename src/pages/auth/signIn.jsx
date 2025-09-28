@@ -3,8 +3,9 @@ import {PasswordInput} from "../../component/authForm/inputComponents/passwordIn
 import {SubmitButton} from "../../component/authForm/button/submitButton";
 import {InputData} from "../../component/authForm/inputComponents/inputComponent";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {sendRequest} from "../../utils";
+import {Link} from "react-router-dom";
 import settings from "../../config";
 
 
@@ -13,16 +14,18 @@ export function SignIn(){
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const fromPage =  location.state?.from?.pathname || '/';
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-
         const result = await sendRequest(
             `${settings.baseURL}/auth/login`,
             {'login': login, 'password':password});
 
         if (result.success){
-            navigate("/");
+            navigate(fromPage, {replace: true});
         } else{
             setLoginError(result.detail);}
         }
@@ -52,7 +55,7 @@ export function SignIn(){
             </form>
 
             <div className={styles.new_user}>
-                New user? <a href="/sign_up" className={styles.sign_up_link}>Sign up</a>
+                New user? <Link to="/sign_up" className={styles.sign_up_link}>Sign up</Link>
             </div>
         </div>
 

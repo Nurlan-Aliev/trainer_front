@@ -14,6 +14,4 @@ export function InputData({ name, type, placeholder, onChange }) {
             />
         </div>
         )
-
-
 }

@@ -5,6 +5,7 @@ import {InputData} from "../../component/authForm/inputComponents/inputComponent
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {sendRequest} from "../../utils";
+import {Link} from "react-router-dom";
 import settings from "../../config";
 
 
@@ -60,7 +61,7 @@ export function SignUp() {
                 </form>
 
                 <div className={styles.new_user}>
-                    I have account! <a href="/sign_in" className={styles.sign_up_link}>Sign in</a>
+                    I have account! <Link to="/sign_in" className={styles.sign_up_link}>Sign in</Link>
                 </div>
             </div>
         </div>
