@@ -3,10 +3,8 @@ import {PasswordInput} from "../../component/authForm/inputComponents/passwordIn
 import {SubmitButton} from "../../component/authForm/button/submitButton";
 import {InputData} from "../../component/authForm/inputComponents/inputComponent";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {sendRequest} from "../../utils";
-import {Link} from "react-router-dom";
-import settings from "../../config";
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import {useAuth} from "../../hook/useAuth";
 
 
 export function SignUp() {
@@ -15,18 +13,21 @@ export function SignUp() {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
     const navigate = useNavigate();
+    const {signUp, token} = useAuth();
+    const location = useLocation();
+    const fromPage =  location.state?.from?.pathname || '/';
+
+    if (token) {
+        return <Navigate to={fromPage}  state={{from: location}}/>;
+    }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
 
-        const result = await sendRequest(
-            `${settings.baseURL}/auth/sign_up`, {
-                'name': name,
-                'login': login,
-                'password':password});
+        const result = await signUp({name, login, password});
 
         if (result.success){
-            navigate("/");
+            navigate(fromPage);
         } else{
             setLoginError(result.detail);}}
 
@@ -61,7 +62,10 @@ export function SignUp() {
                 </form>
 
                 <div className={styles.new_user}>
-                    I have account! <Link to="/sign_in" className={styles.sign_up_link}>Sign in</Link>
+                    I have account!
+                    <button onClick={()=>navigate('/sign_in', {replace: true})} className={styles.sign_up_link}>
+                        Sign in
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,33 +1,35 @@
 import settings from "../config";
 import {Navigate, useLocation} from "react-router-dom";
-import {sendRequest} from "../utils";
+import {sendAuthRequest} from "./utils";
+import {useAuth} from "../hook/useAuth";
+import {useEffect} from "react";
 
 export function PrivateRoute ({children}) {
-    const location = useLocation()
-    let access_token = localStorage.getItem("access_token");
+    const location = useLocation();
+    const {token, refreshToken} = useAuth();
 
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await fetch(`${settings.baseURL}/auth/me`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`}
+                })
+                if (!response.ok){
+                    localStorage.removeItem("access_token")
+                    await sendAuthRequest('/auth/refresh')
+                    refreshToken()
+                }
 
-    const checkAuth = async () => {
-        try {
-            const response = await fetch(`${settings.baseURL}/auth/me`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    authorization: `Bearer ${access_token}`}
-            })
-            if (!response.ok){
-                localStorage.removeItem("access_token")
-                await sendRequest(`${settings.baseURL}/auth/refresh`)
+            }catch (e) {
+                console.error(e);
             }
-
-        }catch (e) {
-            console.error(e);
         }
-    }
-    checkAuth()
+        checkAuth()
+    }, [token, refreshToken])
 
-    access_token = localStorage.getItem("access_token");
-
-    if (!access_token) {
+    if (!token) {
         return <Navigate to="/sign_in"  state={{from: location}}/>;
 
     }
