@@ -1,0 +1,28 @@
+
+.button{
+    margin: 0 10px;
+    font-size: 20px;
+    border: 1px solid rgba(169, 169, 169, 0.49);
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 120px;
+    padding: 6px 10px;
+}
+
+.black{
+    background-color: white;
+    transition: 0.2s;
+    color: black;
+    &:hover{
+        background-color: rgba(203, 203, 203, 0.43);
+    }
+}
+
+.white{
+    background-color: #000000;
+    color: white;
+    transition: 0.2s;
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.82);
+    }
+}
