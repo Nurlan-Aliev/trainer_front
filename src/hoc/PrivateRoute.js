@@ -13,8 +13,11 @@ export function PrivateRoute ({children}) {
             const response = await getData('/auth/me', token)
             if (!response.success){
                 localStorage.removeItem("access_token")
-                await sendAuthRequest('/auth/refresh')
-                refreshToken()
+                const result = await sendAuthRequest('/auth/refresh')
+                if (result.success){
+                    localStorage.setItem("access_token", result.detail)
+                    refreshToken()
+                }
             }}
 
         checkAuth()
