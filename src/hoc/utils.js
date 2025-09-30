@@ -29,12 +29,15 @@ export async function sendAuthRequest (url, data={}) {
 }
 
 
-export async function sendResponseData (url, data={}) {
+export async function sendResponseData (url, data, token) {
     try{
         const response = await fetch(`${settings.baseURL}${url}`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: data
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
         })
         return await response.json()
     }catch (error){
@@ -60,5 +63,6 @@ export async function getData (url, token) {
         }
 
     }catch (error){
+        return {success: false, detail: `We are so sorry. Our server is sick`}
     }
 }

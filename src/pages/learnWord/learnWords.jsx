@@ -13,15 +13,20 @@ export function LearnWords() {
     const [words, setWords] = useState([]);
     const {token} = useAuth();
 
-
-
-
-
     const currentWord = words[count]
 
     const nextWord = (id, actionType) => {
         actionType? setKnow(know+1) : setToLearn(toLearn+1)
         setCount(count + 1);
+    }
+
+    const continueBtn = async () => {
+
+        const response = await getData('/api/', token)
+        if (response.success) {
+            setWords(response.detail)
+            setCount(0)
+        }
     }
 
     useEffect( () => {
@@ -38,20 +43,18 @@ export function LearnWords() {
             {currentWord?
                 <>
                     <div>
-                        <div>Прогресс: {count+1} из 10</div>
-                        <progress value={count+1} max={10}></progress>
+                        <div>Прогресс: {count+1} из {words.length}</div>
+                        <progress value={count} max={words.length}></progress>
                     </div>
 
                     <WordCard
                         key={currentWord.id}
-                        word={currentWord.word_en}
-                        translate={currentWord.word_ru}
-                        id={currentWord.id}
+                        word={currentWord}
                         onClick={nextWord}
                     />
                 </>
                 :
-                <Success know_count={know} toLearn_count={toLearn} />}
+                <Success know_count={know} toLearn_count={toLearn} lenWord={words.length} continueBtn={async () => {await continueBtn()}}/>}
 
         </div>
     )

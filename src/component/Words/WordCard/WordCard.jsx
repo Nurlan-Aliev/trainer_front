@@ -1,24 +1,20 @@
 import styles from './WordCard.module.css'
-// import {sendResponseData} from "../../../hoc/utils";
 import {BlackButton, WhiteButton} from "../buttons/Button";
+import {useAuth} from "../../../hook/useAuth";
+import {sendResponseData} from "../../../hoc/utils";
 
 
-export function WordCard({word, translate, id, onClick}) {
+export function WordCard({word, onClick}) {
+    const {token} = useAuth();
 
     const iKnowBtn = async () => {
-        onClick(id, true)
-        // await sendResponseData('/api/learned', {
-        //     'word_en': word,
-        //     'id': id
-        // })
+        onClick(word.id, true)
+        await sendResponseData('/api/learned', word, token)
     }
 
     const toLearnBtn = async () => {
-        onClick(id, false)
-        // await sendResponseData('/api/to_learn', {
-        //     'word_en': word,
-        //     'id': id
-        // })
+        onClick(word.id, false)
+        await sendResponseData('/api/to_learn', word,token)
     }
 
 
@@ -26,10 +22,10 @@ export function WordCard({word, translate, id, onClick}) {
         <div className={styles.container}>
             <div className={styles.wordContainer}>
                 <div className={styles.word}>
-                    { word.charAt(0).toUpperCase() + word.slice(1) }
+                    { word.word_en.charAt(0).toUpperCase() + word.word_en.slice(1) }
                 </div>
                 <div className={styles.translate}>
-                    {translate.charAt(0).toUpperCase() + translate.slice(1)}
+                    {word.word_ru.charAt(0).toUpperCase() + word.word_ru.slice(1)}
                 </div>
             </div>
 
