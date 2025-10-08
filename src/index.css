@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Dancing+Script:wght@400..700&family=Delius&family=Edu+VIC+WA+NT+Hand:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Moon+Dance&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Dancing+Script:wght@400..700&family=Delius&family=Edu+VIC+WA+NT+Hand:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Moon+Dance&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');*/
 
 *{
     margin: 0;
@@ -8,7 +8,8 @@
 
 body{
     margin: 0 40px;
-    font-family: 'Comic Relief', cursive;
+    font-family: 'Comic Relief', sans-serif;
+    /*font-family: 'Comic Relief', cursive;*/
 }
 
 a{

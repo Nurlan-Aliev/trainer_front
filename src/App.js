@@ -7,6 +7,7 @@ import {SignUp} from "./pages/auth/signUp";
 import {LearnWords} from "./pages/learnWord/learnWords";
 import {PrivateRoute} from "./hoc/PrivateRoute";
 import {AuthProvider} from "./hoc/AuthProvider";
+import {TrainList} from "./pages/train/trainList/trainList";
 
 function App() {
 
@@ -23,6 +24,12 @@ function App() {
                         <LearnWords />
                     </PrivateRoute>
                 }/>
+                <Route path="/train_list" element={
+                    <PrivateRoute >
+                        <TrainList />
+                    </PrivateRoute>
+                }/>
+
             </Routes>
         </AuthProvider>
     )
