@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {Success} from "../../component/Words/Success/Success";
 import {getData} from "../../hoc/utils";
 import {useAuth} from "../../hook/useAuth";
+import {Progress} from "../../component/progress/progress";
 
 
 export function LearnWords() {
@@ -42,10 +43,7 @@ export function LearnWords() {
         <div className={styles.container}>
             {currentWord?
                 <>
-                    <div>
-                        <div>Прогресс: {count+1} из {words.length}</div>
-                        <progress value={count} max={words.length}></progress>
-                    </div>
+                    <Progress count={count} len={words.length} />
 
                     <WordCard
                         key={currentWord.id}
