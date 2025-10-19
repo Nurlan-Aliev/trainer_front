@@ -1,5 +1,4 @@
 import {Navigate, useLocation} from "react-router-dom";
-import {getData, sendAuthRequest} from "./utils";
 import {useAuth} from "../hook/useAuth";
 import {useEffect} from "react";
 
@@ -9,20 +8,11 @@ export function PrivateRoute ({children}) {
 
     useEffect( () => {
 
-        const checkAuth = async () => {
-            const response = await getData('/auth/me', token)
-            if (!response.success){
-                localStorage.removeItem("access_token")
-                const result = await sendAuthRequest('/auth/refresh')
-                if (result.success){
-                    localStorage.setItem("access_token", result.detail)
-                    refreshToken()
-                }
-            }}
+        const intervalId = setInterval(refreshToken, 1 * 10 * 1000);
+        return () => clearInterval(intervalId);
 
-        checkAuth()
+    }, [refreshToken])
 
-    }, [token, refreshToken])
 
     if (!token) {
         return <Navigate to="/sign_in"  state={{from: location}}/>;
