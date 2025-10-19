@@ -1,10 +1,6 @@
 import settings from "../config";
 
-
-
-
-
-export async function sendResponseData (url, data, token) {
+export async function postRequest (url, data, token) {
     try{
         const response = await fetch(`${settings.baseURL}${url}`, {
             method: "POST",
@@ -14,14 +10,21 @@ export async function sendResponseData (url, data, token) {
             },
             body: JSON.stringify(data)
         })
-        return await response.json()
+        const result = await response.json();
+        if(response.ok){
+            return {success: true, detail: result}
+        }
+        else{
+            return {success: false, detail: result.detail}
+        }
     }catch (error){
-        console.log(error)
+        return {success: false, detail: `We are so sorry. Our server is sick`}
     }
 }
 
 
-export async function getData (url, token) {
+export async function getRequest (url, token) {
+
     try{
         const response = await fetch(`${settings.baseURL}${url}`, {
             headers: {
@@ -30,6 +33,7 @@ export async function getData (url, token) {
         })
 
         const result = await response.json();
+
         if(response.ok){
             return {success: true, detail: result}
         }

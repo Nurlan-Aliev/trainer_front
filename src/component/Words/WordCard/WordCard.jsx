@@ -1,20 +1,20 @@
 import styles from './WordCard.module.css'
 import {BlackButton, WhiteButton} from "../buttons/Button";
 import {useAuth} from "../../../hook/useAuth";
-import {sendResponseData} from "../../../hoc/utils";
+import {postRequest} from "../../../hoc/utils";
 
 
 export function WordCard({word, onClick}) {
     const {token} = useAuth();
 
     const iKnowBtn = async () => {
-        onClick(word.id, true)
-        await sendResponseData('/api/learned', word, token)
+        onClick(true)
+        await postRequest('/api/learned', word, token)
     }
 
     const toLearnBtn = async () => {
-        onClick(word.id, false)
-        await sendResponseData('/api/to_learn', word,token)
+        onClick(false)
+        await postRequest('/api/to_learn', word,token)
     }
 
 

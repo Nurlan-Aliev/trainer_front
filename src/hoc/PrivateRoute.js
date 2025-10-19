@@ -8,7 +8,7 @@ export function PrivateRoute ({children}) {
 
     useEffect( () => {
 
-        const intervalId = setInterval(refreshToken, 1 * 10 * 1000);
+        const intervalId = setInterval(refreshToken, 3 * 60 * 1000);
         return () => clearInterval(intervalId);
 
     }, [refreshToken])
