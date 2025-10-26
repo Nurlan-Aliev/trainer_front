@@ -7,7 +7,7 @@ export function PrivateRoute ({children}) {
     const {token, refreshToken} = useAuth();
 
     useEffect( () => {
-
+        refreshToken()
         const intervalId = setInterval(refreshToken, 3 * 60 * 1000);
         return () => clearInterval(intervalId);
 

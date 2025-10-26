@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 
 export function TrainList() {
     const trains = [
-        { src: '/images/vocab/translate.svg', title: 'Multiple Choice Test', desc: 'Choose the correct translation from multiple options', link:'/test/translate', time: '5-10' },
-        { src: '/images/vocab/rev_translate.svg', title: 'Multiple Choice Reverse', desc: 'Choose the correct word from multiple options',link:'/test/rev_translate', time: '5-10' },
-        { src: '/images/vocab/constructor.svg', title: 'Fill in the Blank', desc: 'Type the English word for the given translation',link:'/test/constructor',time: '10-15' },
+        { src: '/images/vocab/translate.svg', title: 'Multiple Choice Test', desc: 'Choose the correct translation from multiple options', link:'/translate', time: '5-10' },
+        { src: '/images/vocab/rev_translate.svg', title: 'Multiple Choice Reverse', desc: 'Choose the correct word from multiple options',link:'/rev_translate', time: '5-10' },
+        { src: '/images/vocab/constructor.svg', title: 'Fill in the Blank', desc: 'Type the English word for the given translation',link:'/constructor',time: '10-15' },
     ];
 
     return (

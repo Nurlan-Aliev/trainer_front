@@ -8,6 +8,10 @@ import {LearnWords} from "./pages/learnWord/learnWords";
 import {PrivateRoute} from "./hoc/PrivateRoute";
 import {AuthProvider} from "./hoc/AuthProvider";
 import {TrainList} from "./pages/train/trainList/trainList";
+import {Constructor} from "./pages/train/constructor/constructor";
+import {Translate} from "./pages/train/translate/translate";
+import {RevTranslate} from "./pages/train/translate/revTranslate";
+
 
 function App() {
 
@@ -27,6 +31,22 @@ function App() {
                 <Route path="/train_list" element={
                     <PrivateRoute >
                         <TrainList />
+                    </PrivateRoute>
+                }/>
+
+                <Route path="/constructor" element={
+                    <PrivateRoute >
+                        <Constructor />
+                    </PrivateRoute>
+                }/>
+                <Route path="/translate" element={
+                    <PrivateRoute >
+                        <Translate />
+                    </PrivateRoute>
+                }/>
+                <Route path="/rev_translate" element={
+                    <PrivateRoute >
+                        <RevTranslate />
                     </PrivateRoute>
                 }/>
 

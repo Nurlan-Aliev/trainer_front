@@ -1,43 +1,19 @@
 import {WordCard} from "../../component/Words/WordCard/WordCard";
 import styles from "./learnWoords.module.css"
-import {useEffect, useState} from "react";
 import {Success} from "../../component/Words/Success/Success";
-import {getData} from "../../hoc/utils";
-import {useAuth} from "../../hook/useAuth";
 import {Progress} from "../../component/progress/progress";
+import {useWords} from "../../hook/useWord";
 
 
 export function LearnWords() {
-    const [count, setCount] = useState(0);
-    const [know, setKnow] = useState(0);
-    const [toLearn, setToLearn] = useState(0);
-    const [words, setWords] = useState([]);
-    const {token} = useAuth();
 
-    const currentWord = words[count]
-
-    const nextWord = (id, actionType) => {
-        actionType? setKnow(know+1) : setToLearn(toLearn+1)
-        setCount(count + 1);
-    }
-
-    const continueBtn = async () => {
-
-        const response = await getData('/api/', token)
-        if (response.success) {
-            setWords(response.detail)
-            setCount(0)
-        }
-    }
-
-    useEffect( () => {
-        const getWords = async () => {
-            const response = await getData('/api/', token)
-            if (response.success) {setWords(response.detail)}
-        }
-
-        getWords()
-    }, [token, setWords])
+    const {words,
+        count,
+        know,
+        toLearn,
+        currentWord,
+        nextWord,
+        continueBtn} = useWords('/api/')
 
     return (
         <div className={styles.container}>
@@ -52,7 +28,15 @@ export function LearnWords() {
                     />
                 </>
                 :
-                <Success know_count={know} toLearn_count={toLearn} lenWord={words.length} continueBtn={async () => {await continueBtn()}}/>}
+                <Success
+                    know_count={know}
+                    toLearn_count={toLearn}
+                    lenWord={words.length}
+                    continueBtn={async () => {
+                        await continueBtn()
+                    }}
+                />
+            }
 
         </div>
     )
