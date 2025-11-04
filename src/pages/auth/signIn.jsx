@@ -30,8 +30,6 @@ export function SignIn(){
 
         }
 
-
-
     return <div className={styles.container}>
         <div className={styles.container_sign_in}>
             <h2 className={styles.title}>Sign in</h2>

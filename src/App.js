@@ -11,6 +11,7 @@ import {TrainList} from "./pages/train/trainList/trainList";
 import {Constructor} from "./pages/train/constructor/constructor";
 import {Translate} from "./pages/train/translate/translate";
 import {RevTranslate} from "./pages/train/translate/revTranslate";
+import {MultiCircles} from "./component/eyes/eyes";
 
 
 function App() {
@@ -19,38 +20,47 @@ function App() {
         <AuthProvider>
 
             <Header/>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/sign_in" element={<SignIn />} />
-                <Route path="/sign_up" element={<SignUp />} />
-                <Route path="/learn" element={
-                    <PrivateRoute >
-                        <LearnWords />
-                    </PrivateRoute>
-                }/>
-                <Route path="/train_list" element={
-                    <PrivateRoute >
-                        <TrainList />
-                    </PrivateRoute>
-                }/>
+            <div className="App">
+                <div className="app_left">
+                    <MultiCircles/>
+                </div>
 
-                <Route path="/constructor" element={
-                    <PrivateRoute >
-                        <Constructor />
-                    </PrivateRoute>
-                }/>
-                <Route path="/translate" element={
-                    <PrivateRoute >
-                        <Translate />
-                    </PrivateRoute>
-                }/>
-                <Route path="/rev_translate" element={
-                    <PrivateRoute >
-                        <RevTranslate />
-                    </PrivateRoute>
-                }/>
+                <div className="app_right">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/sign_in" element={<SignIn />} />
+                        <Route path="/sign_up" element={<SignUp />} />
+                        <Route path="/learn" element={
+                            <PrivateRoute >
+                                <LearnWords />
+                            </PrivateRoute>
+                        }/>
+                        <Route path="/train_list" element={
+                            <PrivateRoute >
+                                <TrainList />
+                            </PrivateRoute>
+                        }/>
 
-            </Routes>
+                        <Route path="/constructor" element={
+                            <PrivateRoute >
+                                <Constructor />
+                            </PrivateRoute>
+                        }/>
+                        <Route path="/translate" element={
+                            <PrivateRoute >
+                                <Translate />
+                            </PrivateRoute>
+                        }/>
+                        <Route path="/rev_translate" element={
+                            <PrivateRoute >
+                                <RevTranslate />
+                            </PrivateRoute>
+                        }/>
+
+                    </Routes>
+                </div>
+
+            </div>
         </AuthProvider>
     )
 }

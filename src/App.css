@@ -1,18 +1,24 @@
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app_left {
+  width: 580px;
 }
 
+.app_right {
+  width: 60%;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+}
+
+@media only screen and (max-width: 1050px) {
+  .app_left {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+  .app_right {
+    width: 100%;
   }
 }
