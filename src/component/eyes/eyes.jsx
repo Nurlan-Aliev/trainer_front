@@ -1,17 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./eyes.module.css";
+import {Eye} from "./eye";
 
 export function MultiCircles() {
+    const [state, setState] = useState(true)
+    const [state2, setState2] = useState(true)
+
+    const change = ()=>{
+        setState(!state )
+        setState2(state )
+
+    }
+    const change2 = ()=>{
+        setState2(!state2 )
+    }
+
     const x = 75
     const circles = [
-        { id: 11, x: x + 20, eye_style: styles.green_eye},
-        { id: 12, x: x + 145, eye_style: styles.green_eye},
-        { id: 21, x: x + 210, eye_style: styles.d_blue_eye},
-        { id: 22, x: x + 320, eye_style: styles.d_blue_eye},
-        { id: 31, x: x, eye_style: styles.orange_eye},
-        { id: 32, x: x + 85, eye_style: styles.orange_eye},
-        { id: 41, x: x +150, eye_style: styles.blue_eye},
-        { id: 42, x: x + 240, eye_style: styles.blue_eye},
+            { id: 12, x: x + 20, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/green.svg'},
+            { id: 11, x: x + 145, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/green.svg'},
+            { id: 22, x: x + 210, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/d_blue.svg'},
+            { id: 21, x: x + 320, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/d_blue.svg'},
+            { id: 32, x: x, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/orange.svg'},
+            { id: 31, x: x + 85, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/orange.svg'},
+            { id: 42, x: x +150, y: 520, eyeStyle: styles.blue_eye, closeEye: '/images/eye/blue.svg'},
+            { id: 41, x: x + 240, y: 520, eyeStyle: styles.blue_eye, closeEye: '/images/eye/blue.svg'}
     ];
 
 
@@ -49,37 +62,28 @@ export function MultiCircles() {
 
         window.addEventListener("mousemove", handleMouseMove);
         return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [circles]);
+    }, []);
 
-    return (
+    return (<>
+        <div style={{ marginTop: "600px", zIndex: 1000 }}>
+            <button onClick={change}>both eye</button>
+            <button onClick={change2}>one eye</button>
+        </div>
             <div className={styles.container}>
+
+
                 <img src="/images/group.svg" alt="Group 8"/>
 
                 <div className={styles.eyes}>
                     {circles.map((circle, i) => (
-                        <div
-                            key={circle.id}
-                            ref={(el) => (refs.current[i] = el)}
-                            className={`${styles.eye} ${circle.eye_style}`}
-                            style={{
-                                // width: circle.size,
-                                // height: circle.size,
-                                // backgroundColor: circle.bgc,
-                                // top: circle.y,
-                                left: circle.x,
-                            }}
-                        >
-                            <div
-                                className={styles.pupil}
-                                style={{
-                                    transform: `translate(${positions[i].x}px, ${positions[i].y}px) translate(-50%, -50%)`
-                                 }}>
-                                <div className={styles.glare}></div>
-                            </div>
+                        <>
+                            <Eye key={circle.id} circle={circle} position={positions[i]} innerRef={(el) => (refs.current[i] = el)} state={state} state2={state2}/>
+                        </>
 
-                        </div>
                     ))}
                 </div>
             </div>
+
+        </>
     );
 }
