@@ -1,17 +1,14 @@
 import styles from "./input.module.css";
-import {useState} from "react";
+import {useEyeState} from "../../../hook/useEyeState";
 
 export function PasswordInput({placeholder, onChange}) {
-    const [visible, setVisible] = useState(true);
 
-    const hideShowSwitcher = ()=> {
-        setVisible(!visible);
-    }
+    const {openOneEye, closeBoth, openBoth, openOne, closeOne} = useEyeState()
 
     return (
-        <div className={styles.input_data_container}>
+        <div className={styles.input_data_container} onFocus={closeBoth} onBlur={openBoth}>
             <input
-                type={visible  ? 'password' : 'text'}
+                type={!openOneEye  ? 'password' : 'text'}
                 name="password"
                 className={styles.input_data}
                 placeholder={placeholder}
@@ -20,10 +17,11 @@ export function PasswordInput({placeholder, onChange}) {
             />
 
             <img
-                src={visible ? "/images/eye/hide.svg" : "/images/eye/show.svg"}
-                alt={visible? "hide":"show"}
+                src="/images/eye/visible.png"
+                alt="eye icon"
                 className={styles.eye_image_pass}
-                onClick={hideShowSwitcher}/>
+                onClick={() => {openOneEye? closeOne(): openOne() }}
+                onMouseDown={e => e.preventDefault()}/>
         </div>
     )
 }

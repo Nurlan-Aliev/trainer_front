@@ -48,6 +48,7 @@ export function SignIn(){
                 <PasswordInput
                     placeholder={`Enter your password`}
                     onChange={(e) =>setPassword(e.target.value)}
+
                 />
 
                 <SubmitButton name={'Sign in'}/>

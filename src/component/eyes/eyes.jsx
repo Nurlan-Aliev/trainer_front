@@ -2,29 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./eyes.module.css";
 import {Eye} from "./eye";
 
+
 export function MultiCircles() {
-    const [state, setState] = useState(true)
-    const [state2, setState2] = useState(true)
-
-    const change = ()=>{
-        setState(!state )
-        setState2(state )
-
-    }
-    const change2 = ()=>{
-        setState2(!state2 )
-    }
-
     const x = 75
     const circles = [
-            { id: 12, x: x + 20, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/green.svg'},
-            { id: 11, x: x + 145, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/green.svg'},
-            { id: 22, x: x + 210, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/d_blue.svg'},
-            { id: 21, x: x + 320, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/d_blue.svg'},
-            { id: 32, x: x, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/orange.svg'},
-            { id: 31, x: x + 85, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/orange.svg'},
-            { id: 42, x: x +150, y: 520, eyeStyle: styles.blue_eye, closeEye: '/images/eye/blue.svg'},
-            { id: 41, x: x + 240, y: 520, eyeStyle: styles.blue_eye, closeEye: '/images/eye/blue.svg'}
+            { id: 12, x: x + 20, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/closed.svg', width: 73 },
+            { id: 11, x: x + 145, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/closed.svg', width: 73},
+            { id: 22, x: x + 210, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/closed.svg', width: 73},
+            { id: 21, x: x + 320, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/closed.svg', width: 73},
+            { id: 32, x: x, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/closed.svg', width: 60},
+            { id: 31, x: x + 85, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/closed.svg', width: 60},
+            { id: 42, x: x +150, y: 530, eyeStyle: styles.blue_eye, closeEye: '/images/eye/closed.svg', width: 55},
+            { id: 41, x: x + 240, y: 530, eyeStyle: styles.blue_eye, closeEye: '/images/eye/closed.svg', width: 55}
     ];
 
 
@@ -64,11 +53,7 @@ export function MultiCircles() {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
-    return (<>
-        <div style={{ marginTop: "600px", zIndex: 1000 }}>
-            <button onClick={change}>both eye</button>
-            <button onClick={change2}>one eye</button>
-        </div>
+    return (
             <div className={styles.container}>
 
 
@@ -77,13 +62,11 @@ export function MultiCircles() {
                 <div className={styles.eyes}>
                     {circles.map((circle, i) => (
                         <>
-                            <Eye key={circle.id} circle={circle} position={positions[i]} innerRef={(el) => (refs.current[i] = el)} state={state} state2={state2}/>
+                            <Eye key={circle.id} circle={circle} position={positions[i]} innerRef={(el) => (refs.current[i] = el)}/>
                         </>
 
                     ))}
                 </div>
             </div>
-
-        </>
     );
 }

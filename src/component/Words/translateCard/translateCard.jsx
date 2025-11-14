@@ -29,15 +29,15 @@ export function TranslateCard({word, nextWord, url, token}) {
             <h3>{word.question[0].toUpperCase() + word.question.slice(1).toLowerCase()}</h3>
             <div className={style.grid}>
                 {word.options.map((i) => {
-                    let btnClass = "btn btn-primary mx-2";
+                    let btnClass = "btn btn-primary m-1";
 
                     if (chang) {
-                        if (i === correctAnswer) btnClass = "btn btn-success mx-2";
+                        if (i === correctAnswer) btnClass = "btn btn-success m-1";
                         else if (i === inputValue && i !== correctAnswer)
-                            btnClass = "btn btn-danger mx-2";
+                            btnClass = "btn btn-danger m-1";
                     }
                     else if (i === inputValue) {
-                        btnClass = "btn btn-warning mx-2";
+                        btnClass = "btn btn-warning m-1";
                     }
                     return (
                         <button
