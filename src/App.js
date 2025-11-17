@@ -1,6 +1,6 @@
 import {Routes, Route} from "react-router-dom";
 import './App.css';
-import HomePage from './pages/homePage/main';
+import HomePage from './pages/homePage/homePage';
 import {Header} from "./component/Header/Header";
 import {SignIn} from "./pages/auth/signIn";
 import {SignUp} from "./pages/auth/signUp";

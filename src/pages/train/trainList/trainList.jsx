@@ -11,13 +11,9 @@ export function TrainList() {
     ];
 
     return (
-        <div className={styles.mainContainer}>
-            <div className={styles.title}>
-                <h2>Learn English Words</h2>
-                <p>Master English vocabulary with interactive tests</p>
-            </div>
-
-            <div className={styles.trainList}>
+        <div>
+            <h2 className={styles.title}>Learn English Words</h2>
+            <div className={styles.mainContainer}>
                 {trains.map((train, i) => (
                     <div key={i} className={styles.constructor}>
                         <img src={train.src} alt="" />
@@ -31,25 +27,6 @@ export function TrainList() {
                     </div>
                 ))}
             </div>
-
-            <div className={styles.info}>
-                <h3>How It Works</h3>
-                <div className={styles.rules}>
-                    <div className={styles.rule}>
-                        <h4>1</h4>
-                        <p>Choose your preferred test type</p>
-                    </div>
-                    <div className={styles.rule}>
-                        <h4>2</h4>
-                        <p>Answer questions with translations</p>
-                    </div>
-                    <div className={styles.rule}>
-                        <h4>3</h4>
-                        <p>See your results and learn new words</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     )
 }
