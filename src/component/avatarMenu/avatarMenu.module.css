@@ -1,0 +1,40 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    width: 230px;
+    padding: 5px;
+    position: absolute;
+    top: 55px;
+    right: 25px;
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.menu.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu__list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu__items{
+    border-radius: 10px;
+    margin: 5px 0;
+    width: 90%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+    font-size: 18px;
+}

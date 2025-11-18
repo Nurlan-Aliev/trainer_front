@@ -19,8 +19,8 @@ function App() {
 
     return (
         <AuthProvider>
-
             <Header/>
+
             <EyeProvider>
                 <div className="App">
                     <div className="app_left">

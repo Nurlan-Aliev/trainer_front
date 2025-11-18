@@ -1,17 +1,13 @@
 import styles from "./userButton.module.css";
-import {useNavigate} from "react-router-dom";
-import {useAuth} from "../../hook/useAuth";
 
 
-export default function UserButton() {
-
-    const navigate = useNavigate();
-    const {signOut} = useAuth();
+export default function UserButton({onclick}) {
 
 
     return (
-        <button className={styles.user_button} onClick={() =>{signOut(()=>navigate('/', {replace: true}))}} >
-            <img src='/images/user.png' alt='user icon'/>
-        </button>
+            <button className={styles.user_button} onClick={onclick}>
+                <img src='/images/user.png' alt='user icon'/>
+            </button>
+
     )
 }

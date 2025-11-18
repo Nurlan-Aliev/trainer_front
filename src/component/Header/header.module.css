@@ -1,11 +1,10 @@
-header{
+.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 40px;
     margin: 10px 0 20px 0;
-    width: 95%;
-    position: fixed;
+    width: 100%;
 }
 
 
