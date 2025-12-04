@@ -10,8 +10,6 @@ export function Header() {
     const [menu, setMenu] = useState(false);
     const {token} = useAuth();
 
-    const onclick = () => {setMenu(!menu);};
-
     return <div className={styles.header}>
         <h2><Link to="/">Trainer</Link></h2>
         {token ?
@@ -20,7 +18,9 @@ export function Header() {
                     <div><Link to="/learn">Learn word</Link></div>
                     <div><Link to="/train_list">Train</Link></div>
                 </div>
-                <UserButton onclick={onclick} />
+                <UserButton
+                    onclick={() => {setMenu(!menu)}}
+                    onblur={() => {setMenu(false)}}/>
                 <AvatarMenu active={menu} />
             </>
         :

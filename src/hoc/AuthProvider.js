@@ -25,7 +25,7 @@ async function sendAuthRequest (url, data={}) {
             return {success: false, detail: result.detail}
         }
     }catch (error){
-        return {success: false, detail: "We are sorry. Our server is sick"}
+        return {success: false, detail: "We are sorry man. Our server is sick"}
     }
 }
 
