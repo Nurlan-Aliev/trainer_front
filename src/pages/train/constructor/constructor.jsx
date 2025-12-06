@@ -11,11 +11,10 @@ export function Constructor(){
     const [inputValue, setInputValue] = useState("");
     const [change, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState('');
+    const [correctCount, setCorrectCount] = useState(0);
 
     const {words,
         count,
-        know,
-        toLearn,
         currentWord,
         nextWord,
         continueBtn} = useWords('/api/constructor')
@@ -32,6 +31,9 @@ export function Constructor(){
     }
     const handleChange = () =>{
         nextWord()
+        if( correctAnswer === inputValue){
+            setCorrectCount(correctCount + 1);
+        }
         setInputValue("");
         setChange(false);
         setCorrectAnswer(null);
@@ -53,7 +55,7 @@ export function Constructor(){
                                     name='word'
                                     placeholder='Type answer here...'
                                     value={inputValue} className={styles.inputLine}
-                                    onChange={(e) => setInputValue(e.target.value)}/>
+                                    onChange={(e) => setInputValue(e.target.value.toLowerCase())}/>
                                     :
                                      correctAnswer === inputValue?
                                          <div className={styles.answer}>
@@ -64,9 +66,6 @@ export function Constructor(){
                                             <div className={styles.wrong}>{inputValue}</div>
                                         </div>
                                 }
-
-
-
                                 {!change ?
                                     <button className="btn btn-primary w-50" disabled={!inputValue} onClick={handleSubmit}>Check</button>:
                                     <button className="btn btn-primary w-50" onClick={handleChange}>Next Word</button>
@@ -77,8 +76,8 @@ export function Constructor(){
                 </div>
                 :
                 <Success
-                    know_count={know}
-                    toLearn_count={toLearn}
+                    know_count={correctCount}
+                    toLearn_count={words.length - correctCount}
                     lenWord={words.length}
                     continueBtn={async () => {
                         await continueBtn()

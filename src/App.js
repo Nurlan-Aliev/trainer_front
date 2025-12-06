@@ -13,6 +13,7 @@ import {Translate} from "./pages/train/translate/translate";
 import {RevTranslate} from "./pages/train/translate/revTranslate";
 import {MultiCircles} from "./component/eyes/eyes";
 import {EyeProvider} from "./hoc/Eyes";
+import {Remember} from "./pages/train/remember/remember";
 
 
 function App() {
@@ -57,6 +58,11 @@ function App() {
                             <Route path="/rev_translate" element={
                                 <PrivateRoute >
                                     <RevTranslate />
+                                </PrivateRoute>
+                            }/>
+                            <Route path="/remember" element={
+                                <PrivateRoute >
+                                    <Remember />
                                 </PrivateRoute>
                             }/>
 

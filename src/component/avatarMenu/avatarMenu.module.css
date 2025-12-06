@@ -16,6 +16,7 @@
     transform: translateY(-10px);
     visibility: hidden;
     transition: 0.3s;
+    z-index: 1000;
 }
 
 .menu.active{

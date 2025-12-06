@@ -19,11 +19,11 @@
     margin: 10px;
     padding: 20px;
     border-radius: 5px;
-    height: 250px;
+    height: 270px;
     cursor: default;
     transition: 0.5s;
     box-shadow: 0 3px 10px #cbcbcb;
-    width: 350px;
+    width: 270px;
 
     &:hover{
         box-shadow: 0 15px 10px #cbcbcb;
@@ -74,6 +74,9 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
     }}
 
 

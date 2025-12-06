@@ -3,7 +3,7 @@ import {useState} from "react";
 import {postRequest} from "../../../hoc/utils";
 
 
-export function TranslateCard({word, nextWord, url, token}) {
+export function TranslateCard({word, nextWord, url, token, countFunc}) {
     const [inputValue, setInputValue] = useState("");
     const [chang, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(null);
@@ -20,6 +20,7 @@ export function TranslateCard({word, nextWord, url, token}) {
     }
     const handleChange = () =>{
         nextWord()
+        countFunc()
         setInputValue("");
         setChange(false);
         setCorrectAnswer(null);

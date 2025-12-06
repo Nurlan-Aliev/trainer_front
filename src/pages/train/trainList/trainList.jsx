@@ -8,10 +8,11 @@ export function TrainList() {
         { src: '/images/vocab/translate.svg', title: 'Multiple Choice Test', desc: 'Choose the correct translation from multiple options', link:'/translate', time: '5-10' },
         { src: '/images/vocab/rev_translate.svg', title: 'Multiple Choice Reverse', desc: 'Choose the correct word from multiple options',link:'/rev_translate', time: '5-10' },
         { src: '/images/vocab/constructor.svg', title: 'Fill in the Blank', desc: 'Type the English word for the given translation',link:'/constructor',time: '10-15' },
+        { src: '/images/vocab/remember.svg', title: 'Remember the word', desc: 'Check if you remember the word',link:'/remember',time: '5-7' },
     ];
 
     return (
-        <div>
+        <>
             <h2 className={styles.title}>Learn English Words</h2>
             <div className={styles.mainContainer}>
                 {trains.map((train, i) => (
@@ -27,6 +28,6 @@ export function TrainList() {
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     )
 }
