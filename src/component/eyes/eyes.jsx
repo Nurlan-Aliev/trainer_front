@@ -57,7 +57,7 @@ export function MultiCircles() {
             <div className={styles.container}>
 
 
-                <img src="/images/group.svg" alt="Group 8"/>
+                <img src="/src/assets/images/group.svg" alt="Group 8"/>
 
                 <div className={styles.eyes}>
                     {circles.map((circle, i) => (

@@ -6,7 +6,7 @@ export default function UserButton({onclick, onblur}) {
 
     return (
             <button className={styles.user_button} onClick={onclick} onBlur={onblur}>
-                <img src='/images/user.png' alt='user icon'/>
+                <img src='/src/assets/images/user.png' alt='user icon'/>
             </button>
 
     )

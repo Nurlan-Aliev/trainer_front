@@ -1,20 +1,19 @@
-import {Routes, Route} from "react-router-dom";
 import './App.css';
-import HomePage from './pages/homePage/homePage';
 import {Header} from "./component/Header/Header";
+import {AuthProvider} from "./hoc/AuthProvider";
+import {MultiCircles} from "./component/eyes/eyes";
+import {EyeProvider} from "./hoc/Eyes";
+import {Route, Routes} from "react-router-dom";
+import HomePage from "./pages/homePage/homePage";
 import {SignIn} from "./pages/auth/signIn";
 import {SignUp} from "./pages/auth/signUp";
-import {LearnWords} from "./pages/learnWord/learnWords";
 import {PrivateRoute} from "./hoc/PrivateRoute";
-import {AuthProvider} from "./hoc/AuthProvider";
+import {LearnWords} from "./pages/learnWord/learnWords";
 import {TrainList} from "./pages/train/trainList/trainList";
 import {Constructor} from "./pages/train/constructor/constructor";
 import {Translate} from "./pages/train/translate/translate";
 import {RevTranslate} from "./pages/train/translate/revTranslate";
-import {MultiCircles} from "./component/eyes/eyes";
-import {EyeProvider} from "./hoc/Eyes";
 import {Remember} from "./pages/train/remember/remember";
-
 
 function App() {
 
