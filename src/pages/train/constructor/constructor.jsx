@@ -21,9 +21,10 @@ export function Constructor(){
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        const response = await postRequest('/api/test?test_type=constructor',{
-            "user_answer": inputValue,
-            "word_id": currentWord.word_id
+        const response = await postRequest('/api/constructor',{
+            "user_answer": inputValue.toLowerCase(),
+            "word_id": currentWord.word_id,
+            "language": "word_ru"
         },token )
         setCorrectAnswer(response.detail);
         setChange(true);
@@ -31,7 +32,7 @@ export function Constructor(){
     }
     const handleChange = () =>{
         nextWord()
-        if( correctAnswer === inputValue){
+        if( correctAnswer === inputValue.toLowerCase()){
             setCorrectCount(correctCount + 1);
         }
         setInputValue("");
@@ -55,9 +56,9 @@ export function Constructor(){
                                     name='word'
                                     placeholder='Type answer here...'
                                     value={inputValue} className={styles.inputLine}
-                                    onChange={(e) => setInputValue(e.target.value.toLowerCase())}/>
+                                    onChange={(e) => setInputValue(e.target.value)}/>
                                     :
-                                     correctAnswer === inputValue?
+                                     correctAnswer === inputValue.toLowerCase()?
                                          <div className={styles.answer}>
                                              <div className={styles.correct}>{correctAnswer}</div>
                                          </div>:

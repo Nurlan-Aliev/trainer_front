@@ -17,8 +17,6 @@ export function Remember(){
 
     const handleSubmit = async (e, remember) => {
         e.preventDefault();
-        console.log("remember", currentWord);
-        console.log("remember", currentWord.id);
         const response =await postRequest('/api/remember',{
             "word_id": currentWord.word_id,
             "remember": remember
@@ -44,7 +42,7 @@ export function Remember(){
                     <div className="d-flex align-items-center justify-content-center">
                         <div className={styles.container}>
                             <form className="d-flex align-items-center justify-content-between flex-column h-100 py-4">
-                                <div className="fs-1">{currentWord.word_ru}</div>
+                                <div className="fs-1">{currentWord.word_en}</div>
                                 {!correctAnswer?
                                     <div className="d-flex justify-content-center">
                                         <button className="btn btn-primary w-50 mx-2" onClick={(e) => handleSubmit(e,false)}>Forgot</button>
@@ -52,7 +50,7 @@ export function Remember(){
                                     </div>
                                     :
                                     <>
-                                        <div>{correctAnswer}</div>
+                                        <div className={styles.answer}>{correctAnswer.word_ru}</div>
                                         <button className="btn btn-primary w-50" onClick={handleChange}>Next Word</button>
                                     </>
                                 }

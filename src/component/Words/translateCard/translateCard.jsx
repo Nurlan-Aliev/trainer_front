@@ -7,17 +7,19 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
     const [inputValue, setInputValue] = useState("");
     const [chang, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(null);
-
+    const questionLanguage = url === '/api/translate' ? 'word_en' : 'word_ru';
+    const answerLanguage = url === '/api/translate' ? 'word_ru' : 'word_en';
 
     const handleSubmit = async () =>{
         const response = await postRequest(url,{
             "user_answer": inputValue,
-            "word_id": word.word_id
+            "word_id": word.word_id,
+            "language": "word_ru"
         },token )
         setCorrectAnswer(response.detail);
         setChange(true);
-
     }
+
     const handleChange = () =>{
         nextWord()
         countFunc()
@@ -25,29 +27,29 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
         setChange(false);
         setCorrectAnswer(null);
     }
+
     return (
         <div className={style.container}>
-            <h3>{word.question[0].toUpperCase() + word.question.slice(1).toLowerCase()}</h3>
+            <h3>{word.question[questionLanguage]}</h3>
             <div className={style.grid}>
                 {word.options.map((i) => {
                     let btnClass = "btn btn-primary m-1";
-
                     if (chang) {
-                        if (i === correctAnswer) btnClass = "btn btn-success m-1";
-                        else if (i === inputValue && i !== correctAnswer)
+                        if (i[answerLanguage] === correctAnswer) btnClass = "btn btn-success m-1";
+                        else if (i[answerLanguage] === inputValue && i !== correctAnswer)
                             btnClass = "btn btn-danger m-1";
                     }
-                    else if (i === inputValue) {
+                    else if (i[answerLanguage] === inputValue) {
                         btnClass = "btn btn-warning m-1";
                     }
                     return (
                         <button
                             className={btnClass}
                             key={i}
-                            onClick={() => setInputValue(i)}
+                            onClick={() => setInputValue(i[answerLanguage])}
                             disabled={!!correctAnswer}
                         >
-                            {i[0].toUpperCase() + i.slice(1).toLowerCase()}
+                            {i[answerLanguage]}
                         </button>
                     );
                 })}
