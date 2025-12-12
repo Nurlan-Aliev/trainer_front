@@ -26,7 +26,7 @@ export function WordCard({word, onClick}) {
         if (i18n.language === 'ru'){
             setLngWord(word.word_ru)
         }else if(i18n.language === 'az'){
-            word.word_az
+            setLngWord(word.word_az)
         }
     })
 
@@ -43,8 +43,8 @@ export function WordCard({word, onClick}) {
             </div>
 
             <div>
-                <WhiteButton onClick={iKnowBtn} name={t('alreadyKnow')}/>
-                <BlackButton onClick={toLearnBtn} name={t('toLearn')}/>
+                <WhiteButton onClick={iKnowBtn} name={t('alreadyKnowBtn')}/>
+                <BlackButton onClick={toLearnBtn} name={t('learnBtn')}/>
             </div>
         </div>
     )

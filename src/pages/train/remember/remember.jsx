@@ -1,6 +1,6 @@
 import styles from './remember.module.css';
 import {Progress} from "../../../component/progress/progress";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Success} from "../../../component/Words/Success/Success";
 import {useWords} from "../../../hook/useWord";
 import {postRequest} from "../../../hoc/utils";
@@ -9,11 +9,13 @@ import {useTranslation} from "react-i18next";
 
 
 export function Remember(){
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const {token} = useAuth();
     const [correctAnswer, setCorrectAnswer] = useState('');
     const [countRemember, setCountRemember] = useState(0);
+    const [lngWord, setLngWord] = useState("");
+
 
     const {words, count, currentWord, nextWord, continueBtn} = useWords('/api/remember')
 
@@ -36,6 +38,14 @@ export function Remember(){
         nextWord()
         setCorrectAnswer(null);
     }
+
+    useEffect(() => {
+        if (i18n.language === 'ru' && currentWord){
+            setLngWord(currentWord.word_ru)
+        }else if(i18n.language === 'az' && currentWord){
+            setLngWord(currentWord.word_az)
+        }
+    })
 
     return (
         <div className="d-flex align-items-center justify-content-center">
@@ -65,7 +75,7 @@ export function Remember(){
                                     </div>
                                     :
                                     <>
-                                        <div className={styles.answer}>{correctAnswer.word_ru}</div>
+                                        <div className={styles.answer}>{lngWord}</div>
                                         <button className="btn btn-primary w-50" onClick={handleChange}>
                                             {t('nextWord')}
                                         </button>

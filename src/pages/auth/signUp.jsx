@@ -37,7 +37,7 @@ export function SignUp() {
     return (
         <div className={styles.container}>
             <div className={styles.container_sign_in}>
-                <h2 className={styles.title}>Sign Up</h2>
+                <h2 className={styles.title}>{t('signUp')}</h2>
 
                 <div className={styles.errorBox}>{loginError}</div>
 
@@ -46,7 +46,7 @@ export function SignUp() {
                     <InputData
                         name={'name'}
                         type={'text'}
-                        placeholder={'Enter your name'}
+                        placeholder={t('enterYourName')}
                         onChange={(e) => setName(e.target.value)}
                     />
                     <InputData

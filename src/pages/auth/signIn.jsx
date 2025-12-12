@@ -35,7 +35,7 @@ export function SignIn(){
 
     return <div className={styles.container}>
         <div className={styles.container_sign_in}>
-            <h2 className={styles.title}>Sign in</h2>
+            <h2 className={styles.title}>{t('signIn')}</h2>
 
             <div className={styles.errorBox}>{loginError}</div>
 
@@ -54,7 +54,7 @@ export function SignIn(){
 
                 />
 
-                <SubmitButton name={'signIn'}/>
+                <SubmitButton name={t('signIn')}/>
             </form>
 
             <div className={styles.new_user}>

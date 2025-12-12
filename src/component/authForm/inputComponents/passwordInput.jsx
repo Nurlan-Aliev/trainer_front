@@ -22,7 +22,7 @@ export function PasswordInput({placeholder, onChange}) {
             />
 
             <img
-                src="/src/assets/images/eye/visible.png"
+                src="/assets/images/eye/visible.png"
                 alt="eye icon"
                 className={styles.eye_image_pass}
                 onClick={() => {openOneEye? closeOne(): openOne() }}

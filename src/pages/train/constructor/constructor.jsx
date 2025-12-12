@@ -1,6 +1,6 @@
 import styles from './constructor.module.css';
 import {Progress} from "../../../component/progress/progress";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Success} from "../../../component/Words/Success/Success";
 import {useWords} from "../../../hook/useWord";
 import {postRequest} from "../../../hoc/utils";
@@ -46,12 +46,12 @@ export function Constructor(){
 
 
     useEffect(() => {
-        if (i18n.language === 'ru') {
-            setLngWord(currentWord.word_ru);
-        }else if(i18n.language === 'az') {
-            setLngWord(currentWord.word_az);
+        if (i18n.language === 'ru' && currentWord){
+            setLngWord(currentWord.word_ru)
+        }else if(i18n.language === 'az' && currentWord){
+            setLngWord(currentWord.word_az)
         }
-    }, [currentWord]);
+    })
 
     return (
         <div className="d-flex align-items-center justify-content-center">

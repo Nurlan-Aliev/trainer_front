@@ -46,8 +46,8 @@ export function Eye({circle, position,innerRef}){
                 </div>
             </div>
             <img
-            src={circle.closeEye}
-            alt={circle.closeEye}
+            src='/assets/images/eye/closed.svg'
+            alt='closed'
             style={{
                 left: circle.x,
                 top: circle.y+45,

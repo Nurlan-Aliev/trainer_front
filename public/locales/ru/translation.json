@@ -11,9 +11,9 @@
   "seeResults": "Смотрите результаты и изучайте новые слова",
 
   "learnEnglishWords": "Изучайте английские слова",
-  "multipleChoiceTest": "Тест с множественным выбором",
+  "multipleChoiceTest": "Тест с вариантами",
   "multipleChoiceDesc": "Выберите правильный перевод из нескольких вариантов",
-  "multipleChoiceReverse": "Обратный тест с множественным выбором",
+  "multipleChoiceReverse": "Обратный тест с вариантами",
   "multipleChoiceReverseDesc": "Выберите правильное слово из нескольких вариантов",
   "fillInTheBlank": "Заполните пропуск",
   "fillInTheBlankDesc": "Введите английское слово для данного перевода",

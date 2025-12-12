@@ -6,14 +6,14 @@ import {Eye} from "./eye";
 export function MultiCircles() {
     const x = 75
     const circles = [
-            { id: 12, x: x + 20, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/closed.svg', width: 73 },
-            { id: 11, x: x + 145, y: 230, eyeStyle: styles.green_eye, closeEye: '/images/eye/closed.svg', width: 73},
-            { id: 22, x: x + 210, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/closed.svg', width: 73},
-            { id: 21, x: x + 320, y: 380, eyeStyle: styles.d_blue_eye, closeEye: '/images/eye/closed.svg', width: 73},
-            { id: 32, x: x, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/closed.svg', width: 60},
-            { id: 31, x: x + 85, y: 460, eyeStyle: styles.orange_eye, closeEye: '/images/eye/closed.svg', width: 60},
-            { id: 42, x: x +150, y: 530, eyeStyle: styles.blue_eye, closeEye: '/images/eye/closed.svg', width: 55},
-            { id: 41, x: x + 240, y: 530, eyeStyle: styles.blue_eye, closeEye: '/images/eye/closed.svg', width: 55}
+            { id: 12, x: x + 20, y: 230, eyeStyle: styles.green_eye, width: 73 },
+            { id: 11, x: x + 145, y: 230, eyeStyle: styles.green_eye, width: 73},
+            { id: 22, x: x + 210, y: 380, eyeStyle: styles.d_blue_eye, width: 73},
+            { id: 21, x: x + 320, y: 380, eyeStyle: styles.d_blue_eye, width: 73},
+            { id: 32, x: x, y: 460, eyeStyle: styles.orange_eye, width: 60},
+            { id: 31, x: x + 85, y: 460, eyeStyle: styles.orange_eye, width: 60},
+            { id: 42, x: x +150, y: 530, eyeStyle: styles.blue_eye, width: 55},
+            { id: 41, x: x + 240, y: 530, eyeStyle: styles.blue_eye, width: 55}
     ];
 
 
@@ -57,7 +57,7 @@ export function MultiCircles() {
             <div className={styles.container}>
 
 
-                <img src="/src/assets/images/group.svg" alt="Group 8"/>
+                <img src="/assets/images/group.svg" alt="Group 8"/>
 
                 <div className={styles.eyes}>
                     {circles.map((circle, i) => (
