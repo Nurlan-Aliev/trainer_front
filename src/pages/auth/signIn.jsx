@@ -5,9 +5,12 @@ import {InputData} from "../../component/authForm/inputComponents/inputComponent
 import {useState} from "react";
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
+import {useTranslation} from "react-i18next";
 
 
 export function SignIn(){
+    const {t} = useTranslation();
+
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
@@ -41,23 +44,23 @@ export function SignIn(){
                 <InputData
                     name={'login'}
                     type={'email'}
-                    placeholder={'Enter your email'}
+                    placeholder={t('enterYourEmail')}
                     onChange={(e) =>setLogin(e.target.value)}
                 />
 
                 <PasswordInput
-                    placeholder={`Enter your password`}
+                    placeholder={t('enterYourPassword')}
                     onChange={(e) =>setPassword(e.target.value)}
 
                 />
 
-                <SubmitButton name={'Sign in'}/>
+                <SubmitButton name={'signIn'}/>
             </form>
 
             <div className={styles.new_user}>
-                New user?
+                {t('newUser')}
                 <button onClick={()=>navigate('/sign_up', {replace: true})} className={styles.sign_up_link}>
-                    Sign Up
+                    {t('signUp')}
                 </button>
             </div>
         </div>

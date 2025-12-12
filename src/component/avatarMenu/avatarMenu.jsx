@@ -2,9 +2,12 @@ import styles from './avatarMenu.module.css'
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
 import { MdLogout } from "react-icons/md";
-
+import LanguageSwitcher from "../langaugeSwitcher/LanguageSwitcher";
+import {useTranslation} from "react-i18next";
 
 export function AvatarMenu({active}) {
+    const {t} = useTranslation();
+
     const navigate = useNavigate();
     const {signOut} = useAuth();
 
@@ -12,12 +15,12 @@ export function AvatarMenu({active}) {
     return (
         <aside className={`${styles.menu} ${active? styles.active : ''}`}>
             <div className={styles.menu__list} >
-
+                <LanguageSwitcher/>
                  <div className={styles.menu__items}
                      onClick={() =>{
                      signOut(()=>navigate('/', {replace: true}))}} >
                      <MdLogout className={styles.menu__items__icon} />
-                     <span>Log out</span>
+                     <span>{t('signOut')}</span>
                  </div>
 
             </div>

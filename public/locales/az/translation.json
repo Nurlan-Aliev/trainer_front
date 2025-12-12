@@ -1,0 +1,55 @@
+{
+  "learnWord": "Söz öyrən",
+  "train": "Təlim",
+  "signIn": "Daxil ol",
+  "signUp": "Qeydiyyat",
+  "signOut": "Çıxış",
+
+  "howItWorks": "Necə işləyir",
+  "chooseTestType": "Üstünlük verdiyiniz test növünü seçin",
+  "answerQuestions": "Tərcümələrlə suallara cavab verin",
+  "seeResults": "Nəticələri görün və yeni sözlər öyrənin",
+
+  "learnEnglishWords": "İngilis sözlərini öyrənin",
+  "multipleChoiceTest": "Çox seçimli test",
+  "multipleChoiceDesc": "Bir neçə variantdan düzgün tərcüməni seçin",
+  "multipleChoiceReverse": "Tərs çox seçimli test",
+  "multipleChoiceReverseDesc": "Bir neçə variantdan düzgün sözü seçin",
+  "fillInTheBlank": "Boşluğu doldurun",
+  "fillInTheBlankDesc": "Verilmiş tərcümə üçün ingilis sözünü yazın",
+  "rememberWord": "Sözü xatırla",
+  "rememberWordDesc": "Sözü xatırlayıb-xatırlamadığınızı yoxlayın",
+  "duration": "Müddət:",
+  "min": "dəq",
+  "startTest": "Testə başla",
+
+  "enterYourEmail": "E-poçtunuzu daxil edin",
+  "enterYourPassword": "Şifrənizi daxil edin",
+  "enterYourName": "Adınızı daxil edin",
+  "newUser": "Yeni istifadəçi?",
+  "haveAccount": "Hesabım var!",
+
+  "typeAnswerHere": "Cavabı bura yazın...",
+  "check": "Yoxla",
+  "nextWord": "Növbəti söz",
+
+  "forgot": "Unutdum",
+  "remember": "Xatırlayıram",
+
+  "fillInTheBlankTitle": "Boşluğu doldurun",
+  "question": "Sual",
+  "of": "dən",
+
+  "greatWork": "Əla iş!",
+  "completedBlock": "Siz",
+  "words": "sözdən ibarət bloku tamamladınız",
+  "alreadyKnow": "Artıq bilirəm:",
+  "toLearn": "Öyrənməli:",
+  "studiedAllWords": "Bütün sözləri öyrəndiniz!!!",
+  "congratulations": "Təbriklərimiz 🎉",
+  "finish": "Bitir",
+  "continue": "Davam et",
+
+  "alreadyKnowBtn": "Artıq bilirəm",
+  "learnBtn": "Öyrən"
+}

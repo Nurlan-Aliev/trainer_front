@@ -1,0 +1,55 @@
+{
+  "learnWord": "Изучить слово",
+  "train": "Тренировка",
+  "signIn": "Войти",
+  "signUp": "Регистрация",
+  "signOut": "Выйти",
+
+  "howItWorks": "Как это работает",
+  "chooseTestType": "Выберите предпочитаемый тип теста",
+  "answerQuestions": "Отвечайте на вопросы с переводами",
+  "seeResults": "Смотрите результаты и изучайте новые слова",
+
+  "learnEnglishWords": "Изучайте английские слова",
+  "multipleChoiceTest": "Тест с множественным выбором",
+  "multipleChoiceDesc": "Выберите правильный перевод из нескольких вариантов",
+  "multipleChoiceReverse": "Обратный тест с множественным выбором",
+  "multipleChoiceReverseDesc": "Выберите правильное слово из нескольких вариантов",
+  "fillInTheBlank": "Заполните пропуск",
+  "fillInTheBlankDesc": "Введите английское слово для данного перевода",
+  "rememberWord": "Запомните слово",
+  "rememberWordDesc": "Проверьте, помните ли вы слово",
+  "duration": "Продолжительность:",
+  "min": "мин",
+  "startTest": "Начать тест",
+
+  "enterYourEmail": "Введите ваш email",
+  "enterYourPassword": "Введите ваш пароль",
+  "enterYourName": "Введите ваше имя",
+  "newUser": "Новый пользователь?",
+  "haveAccount": "У меня есть аккаунт!",
+
+  "typeAnswerHere": "Введите ответ здесь...",
+  "check": "Проверить",
+  "nextWord": "Следующее слово",
+
+  "forgot": "Забыл",
+  "remember": "Помню",
+
+  "fillInTheBlankTitle": "Заполните пропуск",
+  "question": "Вопрос",
+  "of": "из",
+
+  "greatWork": "Отличная работа!",
+  "completedBlock": "Вы завершили блок из",
+  "words": "слов",
+  "alreadyKnow": "Уже знаю:",
+  "toLearn": "На изучение:",
+  "studiedAllWords": "Вы изучили все слова!!!",
+  "congratulations": "Наши поздравления 🎉",
+  "finish": "Завершить",
+  "continue": "Продолжить",
+
+  "alreadyKnowBtn": "Уже знаю",
+  "learnBtn": "Изучить"
+}

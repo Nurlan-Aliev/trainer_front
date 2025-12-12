@@ -1,9 +1,11 @@
 import styles from './trainList.module.css'
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 
 
 export function TrainList() {
+    const {t} = useTranslation();
     const trains = [
         { src: '/images/vocab/translate.svg', title: 'Multiple Choice Test', desc: 'Choose the correct translation from multiple options', link:'/translate', time: '5-10' },
         { src: '/images/vocab/rev_translate.svg', title: 'Multiple Choice Reverse', desc: 'Choose the correct word from multiple options',link:'/rev_translate', time: '5-10' },
@@ -17,14 +19,14 @@ export function TrainList() {
             <div className={styles.mainContainer}>
                 {trains.map((train, i) => (
                     <div key={i} className={styles.constructor}>
-                        <img src={train.src} alt="" />
+                        <img src={train.src} alt="logo" />
                         <h3>{train.title}</h3>
                         <p className={styles.description}>{train.desc}</p>
                         <div className={styles.duration}>
-                            <p>Duration:</p>
-                            <p>{train.time} min</p>
+                            <p>{t('duration')}:</p>
+                            <p>{train.time} {t("min")}</p>
                         </div>
-                        <Link to={train.link} className={styles.button}>Start Test</Link>
+                        <Link to={train.link} className={styles.button}>{t('startTest')}</Link>
                     </div>
                 ))}
             </div>

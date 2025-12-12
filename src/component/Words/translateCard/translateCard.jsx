@@ -1,20 +1,23 @@
 import style from './translate.module.css'
 import {useState} from "react";
 import {postRequest} from "../../../hoc/utils";
+import {useTranslation} from "react-i18next";
 
 
 export function TranslateCard({word, nextWord, url, token, countFunc}) {
+    const {t, i18n} = useTranslation();
+
     const [inputValue, setInputValue] = useState("");
     const [chang, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(null);
-    const questionLanguage = url === '/api/translate' ? 'word_en' : 'word_ru';
-    const answerLanguage = url === '/api/translate' ? 'word_ru' : 'word_en';
+    const questionLanguage = url === '/api/translate' ? 'word_en' : `word_${i18n.language}`;
+    const answerLanguage = url === '/api/translate' ? `word_${i18n.language}` : 'word_en';
 
     const handleSubmit = async () =>{
         const response = await postRequest(url,{
             "user_answer": inputValue,
             "word_id": word.word_id,
-            "language": "word_ru"
+            "language": `word_${i18n.language}`
         },token )
         setCorrectAnswer(response.detail);
         setChange(true);
@@ -56,7 +59,7 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
             </div>
             {chang ? (
                 <button className="btn btn-primary w-50" onClick={handleChange}>
-                    Next Word
+                    {t('nextWord')}
                 </button>
             ) : (
                 <button
@@ -64,7 +67,7 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
                     disabled={!inputValue}
                     onClick={handleSubmit}
                 >
-                    Check
+                    {t('check')}
                 </button>
             )}
         </div>

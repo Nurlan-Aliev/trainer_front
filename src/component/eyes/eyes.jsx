@@ -61,10 +61,7 @@ export function MultiCircles() {
 
                 <div className={styles.eyes}>
                     {circles.map((circle, i) => (
-                        <>
-                            <Eye key={circle.id} circle={circle} position={positions[i]} innerRef={(el) => (refs.current[i] = el)}/>
-                        </>
-
+                        <Eye key={circle.id} circle={circle} position={positions[i]} innerRef={(el) => (refs.current[i] = el)}/>
                     ))}
                 </div>
             </div>

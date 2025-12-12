@@ -5,9 +5,12 @@ import {Success} from "../../../component/Words/Success/Success";
 import {useWords} from "../../../hook/useWord";
 import {postRequest} from "../../../hoc/utils";
 import {useAuth} from "../../../hook/useAuth";
+import {useTranslation} from "react-i18next";
 
 
 export function Remember(){
+    const {t} = useTranslation();
+
     const {token} = useAuth();
     const [correctAnswer, setCorrectAnswer] = useState('');
     const [countRemember, setCountRemember] = useState(0);
@@ -45,13 +48,27 @@ export function Remember(){
                                 <div className="fs-1">{currentWord.word_en}</div>
                                 {!correctAnswer?
                                     <div className="d-flex justify-content-center">
-                                        <button className="btn btn-primary w-50 mx-2" onClick={(e) => handleSubmit(e,false)}>Forgot</button>
-                                        <button className="btn btn-primary w-50 mx-2" onClick={(e) => handleSubmit(e, true)}>Remember</button>
+                                        <button className="btn btn-primary w-50 mx-2"
+                                                onClick={(e) =>
+                                                    handleSubmit(e,false)}
+                                        >
+                                            {t("forgot")}
+                                        </button>
+
+                                        <button className="btn btn-primary w-50 mx-2"
+                                                onClick={(e) =>
+                                                    handleSubmit(e, true)}
+                                        >
+                                            {t('remember')}
+                                        </button>
+
                                     </div>
                                     :
                                     <>
                                         <div className={styles.answer}>{correctAnswer.word_ru}</div>
-                                        <button className="btn btn-primary w-50" onClick={handleChange}>Next Word</button>
+                                        <button className="btn btn-primary w-50" onClick={handleChange}>
+                                            {t('nextWord')}
+                                        </button>
                                     </>
                                 }
                             </form>

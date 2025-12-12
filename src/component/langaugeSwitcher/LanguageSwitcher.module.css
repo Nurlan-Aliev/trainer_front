@@ -1,0 +1,26 @@
+
+
+.switcherLanguage__button{
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    background: none;
+    outline: none;
+    position: relative;
+    display: inline-block;
+    transition: 0.3s;
+    &:hover{
+        background-color: lightgray;
+    }
+}
+
+
+.switcherLanguage__button:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.switcherLanguage__button:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

@@ -5,14 +5,18 @@ import {Success} from "../../../component/Words/Success/Success";
 import {useWords} from "../../../hook/useWord";
 import {postRequest} from "../../../hoc/utils";
 import {useAuth} from "../../../hook/useAuth";
+import {useTranslation} from "react-i18next";
 
 export function Constructor(){
+    const {t, i18n} = useTranslation();
+
     const {token} = useAuth();
     const [inputValue, setInputValue] = useState("");
     const [change, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState('');
     const [correctCount, setCorrectCount] = useState(0);
-
+    const [lngWord, setLngWord] = useState("");
+    
     const {words,
         count,
         currentWord,
@@ -24,7 +28,7 @@ export function Constructor(){
         const response = await postRequest('/api/constructor',{
             "user_answer": inputValue.toLowerCase(),
             "word_id": currentWord.word_id,
-            "language": "word_ru"
+            "language": `word_${i18n.language}`
         },token )
         setCorrectAnswer(response.detail);
         setChange(true);
@@ -39,6 +43,16 @@ export function Constructor(){
         setChange(false);
         setCorrectAnswer(null);
     }
+
+
+    useEffect(() => {
+        if (i18n.language === 'ru') {
+            setLngWord(currentWord.word_ru);
+        }else if(i18n.language === 'az') {
+            setLngWord(currentWord.word_az);
+        }
+    }, [currentWord]);
+
     return (
         <div className="d-flex align-items-center justify-content-center">
             {currentWord?
@@ -49,12 +63,12 @@ export function Constructor(){
                     <div className="d-flex align-items-center justify-content-center">
                         <div className={styles.container}>
                             <form className="d-flex align-items-center justify-content-between flex-column h-100 py-4" autocomplete="off">
-                                <div className="fs-1">{currentWord.word_ru}</div>
+                                <div className="fs-1">{lngWord}</div>
                                 {!change ?
                                     <input
                                     type='text'
                                     name='word'
-                                    placeholder='Type answer here...'
+                                    placeholder={t('typeAnswerHere')}
                                     value={inputValue} className={styles.inputLine}
                                     onChange={(e) => setInputValue(e.target.value)}/>
                                     :
@@ -68,8 +82,8 @@ export function Constructor(){
                                         </div>
                                 }
                                 {!change ?
-                                    <button className="btn btn-primary w-50" disabled={!inputValue} onClick={handleSubmit}>Check</button>:
-                                    <button className="btn btn-primary w-50" onClick={handleChange}>Next Word</button>
+                                    <button className="btn btn-primary w-50" disabled={!inputValue} onClick={handleSubmit}>{t("check")}</button>:
+                                    <button className="btn btn-primary w-50" onClick={handleChange}>{t('nextWord')}</button>
                                 }
                             </form>
                         </div>
