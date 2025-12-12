@@ -62,7 +62,9 @@ export function Constructor(){
 
                     <div className="d-flex align-items-center justify-content-center">
                         <div className={styles.container}>
-                            <form className="d-flex align-items-center justify-content-between flex-column h-100 py-4" autocomplete="off">
+                            <form
+                                className="d-flex align-items-center justify-content-between flex-column h-100 py-4"
+                                autocomplete="off">
                                 <div className="fs-1">{lngWord}</div>
                                 {!change ?
                                     <input
