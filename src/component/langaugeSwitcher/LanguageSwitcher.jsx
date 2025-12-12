@@ -15,7 +15,6 @@ export default function LanguageSwitcher() {
                 type='submit'
                 key={lng}
                 onClick={()=> i18n.changeLanguage(lng)}
-                // disabled={i18n.resolvedLanguage === lng}
                 className={styles.switcherLanguage__button}
             >
                 {lang[lng].nativeName}

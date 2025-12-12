@@ -4,8 +4,9 @@ import {useAuth} from "../../hook/useAuth";
 import { MdLogout } from "react-icons/md";
 import LanguageSwitcher from "../langaugeSwitcher/LanguageSwitcher";
 import {useTranslation} from "react-i18next";
+import { forwardRef } from "react";
 
-export function AvatarMenu({active}) {
+export const AvatarMenu = forwardRef(({ active }, ref) => {
     const {t} = useTranslation();
 
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ export function AvatarMenu({active}) {
 
 
     return (
-        <aside className={`${styles.menu} ${active? styles.active : ''}`}>
+        <aside ref={ref} className={`${styles.menu} ${active? styles.active : ''}`}>
             <div className={styles.menu__list} >
                 <LanguageSwitcher/>
                  <div className={styles.menu__items}
@@ -26,4 +27,4 @@ export function AvatarMenu({active}) {
             </div>
         </aside>
     )
-}
+})
