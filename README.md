@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Trainer — Language Learning Platform (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend application for a language learning platform focused on vocabulary acquisition through interactive tests.
+The application communicates with a FastAPI backend via REST API and provides a multilingual user interface.
 
-## Available Scripts
+## Features
+* User registration and authentication
+* JWT-based authorization (access & refresh tokens)
+* Vocabulary learning interface
+* Interactive testing workflow
+* Progress tracking
+* Multilingual interface:
+  * Russian
+  * Azerbaijani
+* Responsive UI built with plain CSS
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+* Framework: Vue.js
+* Styling: Plain CSS (CSS Modules)
+* API Communication: REST API
+* Authentication: JWT (stored in localStorage)
+* Internationalization: Custom i18n implementation (JSON-based translations)
+* Build Tool: Vite
+* DevOps: Docker, Nginx
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Application Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* The frontend allows users to:
+* Sign up and log in
+* Choose interface language (RU / AZ)
+* Select words to learn or mark them as already known
+* Complete vocabulary tests:
+  * Multiple-choice translation
+  * Reverse translation
+  * Typing test
+  * Remember / Forgot confirmation
+* Track personal learning progress
+All user actions are synchronized with the backend via REST API.
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```angular2html
+trainer-front/
+├── public/
+│   └── locales/
+│       ├── ru/
+│       └── az/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── hoc/
+│   ├── i18n.js
+│   ├── routers.jsx
+│   ├── main.jsx
+│   └── App.jsx
+├── Dockerfile
+├── nginx.conf
+├── package.json
+└── vite.config.js
+```
 
-### `npm run build`
+## Authentication & API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Authentication is handled via the backend
+* Access and refresh tokens are stored in localStorage
+* Token refresh is handled automatically during API requests
+* Protected routes are guarded on the frontend side
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Internationalization (i18n)
+* The application supports Russian and Azerbaijani
+* Translations are stored as JSON files
+* Language can be switched dynamically from the UI
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Running the Project
+Local Development
+```bash
 
-### `npm run eject`
+npm install
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Docker
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The frontend can also be built and served using Docker:
+```bash
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+docker build -t trainer-front .
+docker run -p 80:80 trainer-front
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+In production, the frontend is served via Nginx and can be integrated with the backend using Docker Compose.
 
-## Learn More
+## Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The backend is implemented with FastAPI and located in a separate repository:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👉 [backend-trainer](https://github.com/Nurlan-Aliev/trainer)
 
-### Code Splitting
+The frontend communicates with the backend via REST API and relies on it for:
+* authentication
+* business logic
+* vocabulary management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project Status
 
-### Analyzing the Bundle Size
+This is a pet project built to demonstrate frontend and full-stack integration skills.
+The project is actively evolving and open for further improvements.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Author
 
-### Making a Progressive Web App
+Nurlan Aliev
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Python Backend Developer
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[GitHub](https://github.com/Nurlan-Aliev) [LinkedIn](https://linkedin.com/in/nurlan-aliev)
