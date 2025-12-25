@@ -1,6 +1,6 @@
-FROM node:alpine AS build
+FROM node:20-slim AS build
 WORKDIR /app
-COPY package.json package.json
+COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
