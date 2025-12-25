@@ -34,7 +34,7 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
     return (
         <div className={style.container}>
             <h3>{word.question[questionLanguage]}</h3>
-            <div className={style.grid}>
+            <div className={style.options}>
                 {word.options.map((i) => {
                     let btnClass = "btn btn-primary m-1";
                     if (chang) {
@@ -58,12 +58,12 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
                 })}
             </div>
             {chang ? (
-                <button className="btn btn-primary w-50" onClick={handleChange}>
+                <button className="btn btn-primary" onClick={handleChange}>
                     {t('nextWord')}
                 </button>
             ) : (
                 <button
-                    className="btn btn-primary w-50"
+                    className="btn btn-primary"
                     disabled={!inputValue}
                     onClick={handleSubmit}
                 >

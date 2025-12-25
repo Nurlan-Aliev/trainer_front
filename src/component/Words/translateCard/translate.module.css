@@ -1,22 +1,10 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
-    /*justify-content: space-around;*/
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(161, 161, 161, 0.46);
-    box-shadow: 0 0 10px 0 rgba(161, 161, 161, 0.46);
-    border-radius: 10px;
-    height: 350px;
-    width: 95vw;
-    max-width: 450px;
 }
-
-.grid{
-    /*display: grid;*/
-    /*grid-template-columns: 2fr 2fr;*/
-    /*gap: 10px;*/
-    /*align-items: center;*/
+.options{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,6 +12,6 @@
     margin: 20px 0;
 }
 
-.grid button{
+button{
     width: 150px;
 }

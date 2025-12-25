@@ -11,6 +11,8 @@ export function useWords(url) {
     const { token } = useAuth();
 
     const currentWord = words[count];
+    console.log(words)
+    console.log(currentWord)
 
     const nextWord = (actionType) => {
         actionType ? setKnow(prev => prev + 1) : setToLearn(prev => prev + 1);

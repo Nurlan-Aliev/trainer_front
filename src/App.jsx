@@ -45,9 +45,9 @@ function App() {
                             }/>
 
                             <Route path="/constructor" element={
-                                // <PrivateRoute >
+                                <PrivateRoute >
                                     <Constructor />
-                                // </PrivateRoute>
+                                </PrivateRoute>
                             }/>
                             <Route path="/translate" element={
                                 <PrivateRoute >

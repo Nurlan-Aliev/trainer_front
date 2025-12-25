@@ -1,11 +1,11 @@
 import styles from './constructor.module.css';
-import {Progress} from "../../../component/progress/progress";
 import {useState, useEffect} from "react";
-import {Success} from "../../../component/Words/Success/Success";
 import {useWords} from "../../../hook/useWord";
 import {postRequest} from "../../../hoc/utils";
 import {useAuth} from "../../../hook/useAuth";
+import {TrainParent} from "/src/component/trainParent/train";
 import {useTranslation} from "react-i18next";
+
 
 export function Constructor(){
     const {t, i18n} = useTranslation();
@@ -54,53 +54,42 @@ export function Constructor(){
     })
 
     return (
-        <div className="d-flex align-items-center justify-content-center">
-            {currentWord?
-                <div>
+        <TrainParent
+            child={<form
+                className="d-flex align-items-center justify-content-between flex-column h-100 py-4"
+                autoComplete="off">
+                <div className="fs-1">{lngWord}</div>
+                {!change ?
+                    <input
+                        type='text'
+                        name='word'
+                        placeholder={t('typeAnswerHere')}
+                        value={inputValue} className={styles.inputLine}
+                        onChange={(e) => setInputValue(e.target.value)}/>
+                    :
 
-                    <Progress count={count} len={words.length}/>
+                        <div className={styles.answer}>
+                            <div className={styles.correct}>{correctAnswer}</div>
 
-                    <div className="d-flex align-items-center justify-content-center">
-                        <div className={styles.container}>
-                            <form
-                                className="d-flex align-items-center justify-content-between flex-column h-100 py-4"
-                                autocomplete="off">
-                                <div className="fs-1">{lngWord}</div>
-                                {!change ?
-                                    <input
-                                    type='text'
-                                    name='word'
-                                    placeholder={t('typeAnswerHere')}
-                                    value={inputValue} className={styles.inputLine}
-                                    onChange={(e) => setInputValue(e.target.value)}/>
-                                    :
-                                     correctAnswer === inputValue.toLowerCase()?
-                                         <div className={styles.answer}>
-                                             <div className={styles.correct}>{correctAnswer}</div>
-                                         </div>:
-                                        <div className={styles.answer}>
-                                            <div className={styles.correct}>{correctAnswer}</div>
-                                            <div className={styles.wrong}>{inputValue}</div>
-                                        </div>
-                                }
-                                {!change ?
-                                    <button className="btn btn-primary w-50" disabled={!inputValue} onClick={handleSubmit}>{t("check")}</button>:
-                                    <button className="btn btn-primary w-50" onClick={handleChange}>{t('nextWord')}</button>
-                                }
-                            </form>
+                            {correctAnswer !== inputValue.toLowerCase() && (
+                            <div className={styles.wrong}>{inputValue}</div>
+                            )}
+
                         </div>
-                    </div>
-                </div>
-                :
-                <Success
-                    know_count={correctCount}
-                    toLearn_count={words.length - correctCount}
-                    lenWord={words.length}
-                    continueBtn={async () => {
-                        await continueBtn()
-                    }}
-                />
-            }
-        </div>
+
+                }
+                {!change ?
+                    <button className="btn btn-primary" disabled={!inputValue}
+                            onClick={handleSubmit}>{t("check")}</button> :
+                    <button className="btn btn-primary" onClick={handleChange}>{t('nextWord')}</button>
+                }
+            </form>}
+            currentWord={currentWord}
+            count={count}
+            know_count={correctCount}
+            toLearn_count={words.length - correctCount}
+            lenWord={words.length}
+            continueBtn={continueBtn}
+        />
     )
 }
