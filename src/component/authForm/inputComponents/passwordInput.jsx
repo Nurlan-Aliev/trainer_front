@@ -16,7 +16,7 @@ export function PasswordInput({placeholder, onChange}) {
                 required
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                        openBoth(); // то, что ты хочешь вызвать при Blur
+                        openBoth();
                     }
                 }}
             />
