@@ -31,7 +31,7 @@ export function AddEditForm({title, words, handleChange, handleSubmit}) {
                     className={styles.editInput}
                 />
 
-                <button className={styles.editButton}>{t("edit")}</button>
+                <button className={styles.editButton}>{t("send")}</button>
             </form>
         </div>
     )
