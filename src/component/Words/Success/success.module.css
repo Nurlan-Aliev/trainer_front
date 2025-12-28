@@ -38,7 +38,7 @@
     margin-top: 20px;
 }
 .congratulations p{
-    color: rgba(0, 0, 0, 0.82);
+    color: var(--black);
     margin: 0;
 }
 

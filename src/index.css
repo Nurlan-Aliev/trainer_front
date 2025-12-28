@@ -1,3 +1,8 @@
+:root {
+    --background-switch-color: #ffffff;
+    --black: black
+}
+
 *{
     margin: 0;
     padding: 0;
