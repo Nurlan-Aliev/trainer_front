@@ -62,7 +62,7 @@
     color: #3f3f3f;
 }
 
-@media screen and (max-width: 1410px) {
+@media screen and (max-width: 1200px) {
     .mainContainer{
         display: flex;
         flex-direction: column;

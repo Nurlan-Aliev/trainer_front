@@ -1,12 +1,13 @@
 .container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     height: 300px;
     width: 450px;
     border: 1px solid rgba(173, 173, 173, 0.65);
     border-radius: 15px;
+    padding-bottom: 15px;
 }
 
 .wordContainer{
@@ -33,4 +34,10 @@
         margin: 10px 0;
 
     }
+}
+
+.editIcon{
+    font-size: 30px;
+    align-self: end;
+    margin: 0 10px;
 }

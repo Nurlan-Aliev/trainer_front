@@ -6,12 +6,15 @@
 }
 .options{
     display: flex;
+    width: 150px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 20px 0;
 }
-
-button{
+.options button{
+    width: 150px;
+}
+.button{
     width: 150px;
 }

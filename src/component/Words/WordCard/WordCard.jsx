@@ -4,6 +4,8 @@ import {useAuth} from "../../../hook/useAuth";
 import {postRequest} from "../../../hoc/utils";
 import {useTranslation} from "react-i18next";
 import {useEffect, useState} from "react";
+import { FiEdit } from "react-icons/fi";
+import {Link} from "react-router-dom";
 
 
 export function WordCard({word, onClick}) {
@@ -33,6 +35,10 @@ export function WordCard({word, onClick}) {
 
     return (
         <div className={styles.container}>
+            <Link className={styles.editIcon} to={`/edit/${word.id}`} >
+                <FiEdit/>
+            </Link>
+
             <div className={styles.wordContainer}>
                 <div className={styles.word}>
                     { word.word_en.charAt(0).toUpperCase() + word.word_en.slice(1) }
