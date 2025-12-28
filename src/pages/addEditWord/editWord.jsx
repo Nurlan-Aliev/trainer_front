@@ -5,6 +5,7 @@ import {useAuth} from "../../hook/useAuth";
 import {Loading} from "../../component/loading/loading";
 import {AddEditForm} from "../../component/addEditForm/addEditForm";
 import {useTranslation} from "react-i18next";
+import PushDemo from "../../component/notification/notification";
 
 
 export function EditWord() {
@@ -14,14 +15,20 @@ export function EditWord() {
     const {token} = useAuth();
     const [loading, setLoading] = useState(true);
 
-
-
     const [words, setWords] = useState({
         id: id,
         word_en: "",
         word_ru: "",
         word_az: ""
     });
+    const [notification, setNotification] = useState(null)
+
+    function showNotification() {
+        setNotification({
+            id: Date.now(),
+            text: t('pushEditWord'),
+        })
+    }
 
     useEffect(() => {
         async function fetchWord() {
@@ -49,6 +56,7 @@ export function EditWord() {
     async function handleSubmit(e) {
         e.preventDefault();
         await postRequest('/api/admin/word', words, token,'PUT' );
+        showNotification()
 
     }
 
@@ -56,5 +64,15 @@ export function EditWord() {
         return <div><Loading/></div>;
     }
 
-    return <AddEditForm title={t('editTitle')} words={words} handleSubmit={handleSubmit} handleChange={handleChange} />
+    return (
+        <div>
+            <PushDemo notification={notification} setNotification={setNotification}/>
+            <AddEditForm
+                title={t('editTitle')}
+                words={words}
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+            />
+        </div>
+    )
 }
