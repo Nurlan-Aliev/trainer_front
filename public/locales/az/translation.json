@@ -40,6 +40,7 @@
   "question": "Sual",
   "of": "dən",
 
+  "trainWords": "Söz təlimi",
   "greatWork": "Əla iş!",
   "completedBlock": "Siz",
   "words": "sözdən ibarət bloku tamamladınız",
@@ -53,7 +54,10 @@
   "alreadyKnowBtn": "Artıq bilirəm",
   "learnBtn": "Öyrən",
 
-  "edit": "redaktə et",
+  "send": "Göndər",
+
+  "addNewWordTitle": "Yeni söz yaradın",
+
 
   "editTitle": "Sözü redaktə edin",
   "enWord": "İngilis dilində söz",

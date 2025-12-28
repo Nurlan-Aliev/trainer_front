@@ -15,7 +15,7 @@ export function TrainList() {
 
     return (
         <>
-            <h2 className={styles.title}>Learn English Words</h2>
+            <h2 className={styles.title}>{t('trainWords')}</h2>
             <div className={styles.mainContainer}>
                 {trains.map((train, i) => (
                     <div key={i} className={styles.constructor}>

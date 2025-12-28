@@ -14,7 +14,8 @@ import {Constructor} from "./pages/train/constructor/constructor";
 import {Translate} from "./pages/train/translate/translate";
 import {RevTranslate} from "./pages/train/translate/revTranslate";
 import {Remember} from "./pages/train/remember/remember";
-import {Edit} from "./pages/editWord/editWord";
+import {EditWord} from "./pages/addEditWord/editWord";
+import {AddWord} from "./pages/addEditWord/addWord";
 
 function App() {
 
@@ -68,7 +69,12 @@ function App() {
 
                             <Route path='/edit/:id' element={
                                 <PrivateRoute >
-                                    <Edit />
+                                    <EditWord />
+                                </PrivateRoute>
+                            }/>
+                            <Route path='/add_new_word' element={
+                                <PrivateRoute >
+                                    <AddWord />
                                 </PrivateRoute>
                             }/>
 

@@ -7,7 +7,7 @@ import {AddEditForm} from "../../component/addEditForm/addEditForm";
 import {useTranslation} from "react-i18next";
 
 
-export function Edit() {
+export function EditWord() {
     const { t } = useTranslation();
 
     const { id } = useParams();
