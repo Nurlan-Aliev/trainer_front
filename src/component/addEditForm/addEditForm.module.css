@@ -1,0 +1,35 @@
+.title{
+    text-align: center;
+    margin: 20px;
+}
+.editForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+.editInput{
+    text-align: center;
+    width: 20rem;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 22px;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.editButton{
+    padding: 5px 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #0d6efd;
+    box-shadow: 2px 2px 4px #7a7a7a;
+    color: white;
+}

@@ -14,6 +14,7 @@ import {Constructor} from "./pages/train/constructor/constructor";
 import {Translate} from "./pages/train/translate/translate";
 import {RevTranslate} from "./pages/train/translate/revTranslate";
 import {Remember} from "./pages/train/remember/remember";
+import {Edit} from "./pages/editWord/editWord";
 
 function App() {
 
@@ -62,6 +63,12 @@ function App() {
                             <Route path="/remember" element={
                                 <PrivateRoute >
                                     <Remember />
+                                </PrivateRoute>
+                            }/>
+
+                            <Route path='/edit/:id' element={
+                                <PrivateRoute >
+                                    <Edit />
                                 </PrivateRoute>
                             }/>
 
