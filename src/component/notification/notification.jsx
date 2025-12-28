@@ -1,7 +1,10 @@
 import { AnimatePresence, motion } from "motion/react"
 import styles from "./notification.module.css"
+import {usePushMessage} from "../../hook/usePushMessage";
 
-export default function PushDemo({notification, setNotification}) {
+export default function PushMessage() {
+    const {notification, hideNotification} = usePushMessage();
+
 
     return (
         <div className={styles.page}>
@@ -19,7 +22,7 @@ export default function PushDemo({notification, setNotification}) {
 
                         <button
                             className={styles.close}
-                            onClick={() => setNotification(null)}
+                            onClick={() => hideNotification()}
                         >
                             ✕
                         </button>

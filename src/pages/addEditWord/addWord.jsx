@@ -1,10 +1,10 @@
 import {useState } from "react";
 import {postRequest} from "../../hoc/utils";
 import {useAuth} from "../../hook/useAuth";
-import {Loading} from "../../component/loading/loading";
 import {AddEditForm} from "../../component/addEditForm/addEditForm";
 import {useTranslation} from "react-i18next";
 import PushDemo from "../../component/notification/notification";
+import {usePushMessage} from "../../hook/usePushMessage";
 
 
 export function AddWord() {
@@ -15,15 +15,7 @@ export function AddWord() {
         word_ru: "",
         word_az: ""
     });
-    const [notification, setNotification] = useState(null)
-
-    function showNotification() {
-        setNotification({
-            id: Date.now(),
-            text: t('pushAadWord'),
-        })
-    }
-
+    const {showNotification} = usePushMessage();
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -37,14 +29,13 @@ export function AddWord() {
     async function handleSubmit(e) {
         e.preventDefault();
         await postRequest('/api/admin/word', words, token,'POST' );
-        showNotification()
+        showNotification( t('pushAadWord'))
 
 
     }
 
     return <div>
-        <PushDemo notification={notification} setNotification={setNotification}/>
-
+        <PushDemo/>
         <AddEditForm
             title={t('addNewWordTitle')}
             words={words}

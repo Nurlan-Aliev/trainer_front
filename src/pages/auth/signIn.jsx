@@ -6,18 +6,19 @@ import {useState} from "react";
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
 import {useTranslation} from "react-i18next";
+import PushDemo from "../../component/notification/notification";
+import {usePushMessage} from "../../hook/usePushMessage";
 
 
 export function SignIn(){
     const {t} = useTranslation();
-
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState("");
     const navigate = useNavigate();
     const {signIn, token} = useAuth();
     const location = useLocation();
     const fromPage =  location.state?.from?.pathname || '/';
+    const {showNotification} = usePushMessage();
 
     if (token) {
         return <Navigate to={fromPage}  state={{from: location}}/>;
@@ -29,32 +30,31 @@ export function SignIn(){
         if (result.success){
             navigate(fromPage, {replace: true});
         } else{
-            setLoginError(result.detail);}
-
+            showNotification(result.detail)}
         }
+
+
 
     return <div className={styles.container}>
         <div className={styles.container_sign_in}>
+            <PushDemo/>
             <h2 className={styles.title}>{t('signIn')}</h2>
-
-            <div className={styles.errorBox}>{loginError}</div>
 
             <form className={styles.form_style} onSubmit={handleSubmit}>
 
                 <InputData
                     name={'login'}
                     type={'email'}
-                    placeholder={t('enterYourEmail')}
-                    onChange={(e) =>setLogin(e.target.value)}
+                    placeholder={t('enterYourEmail')} onChange={(e)=>
+                    setLogin(e.target.value)}
                 />
 
                 <PasswordInput
                     placeholder={t('enterYourPassword')}
-                    onChange={(e) =>setPassword(e.target.value)}
-
+                    onChange={(e)=>setPassword(e.target.value)}
                 />
 
-                <SubmitButton name={t('signIn')}/>
+                <SubmitButton name={t('signIn')} />
             </form>
 
             <div className={styles.new_user}>
@@ -64,6 +64,5 @@ export function SignIn(){
                 </button>
             </div>
         </div>
-
     </div>
 }

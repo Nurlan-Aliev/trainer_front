@@ -6,6 +6,8 @@ import {useState} from "react";
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
 import {useTranslation} from "react-i18next";
+import PushDemo from "../../component/notification/notification";
+import {usePushMessage} from "../../hook/usePushMessage";
 
 
 export function SignUp() {
@@ -14,11 +16,11 @@ export function SignUp() {
     const [name, setName] = useState("");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState("");
     const navigate = useNavigate();
     const {signUp, token} = useAuth();
     const location = useLocation();
     const fromPage =  location.state?.from?.pathname || '/';
+    const {showNotification} = usePushMessage();
 
     if (token) {
         return <Navigate to={fromPage}  state={{from: location}}/>;
@@ -32,14 +34,16 @@ export function SignUp() {
         if (result.success){
             navigate(fromPage);
         } else{
-            setLoginError(result.detail);}}
+            showNotification(result.detail);
+        }
+    }
 
     return (
         <div className={styles.container}>
             <div className={styles.container_sign_in}>
-                <h2 className={styles.title}>{t('signUp')}</h2>
 
-                <div className={styles.errorBox}>{loginError}</div>
+                <PushDemo/>
+                <h2 className={styles.title}>{t('signUp')}</h2>
 
                 <form className={styles.form_style} onSubmit={handleSubmit}>
 
