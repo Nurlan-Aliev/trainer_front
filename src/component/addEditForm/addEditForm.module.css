@@ -33,3 +33,27 @@
     box-shadow: 2px 2px 4px #7a7a7a;
     color: white;
 }
+
+.inputBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.options{
+    margin-bottom: 20px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover{
+        background-color: #e1843d;
+        color: white;
+    }
+}

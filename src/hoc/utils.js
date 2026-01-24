@@ -1,9 +1,9 @@
 import settings from "../config";
 
-export async function postRequest (url, data, token) {
+export async function postRequest (url, data, token, method='POST') {
     try{
         const response = await fetch(`${settings.baseURL}${url}`, {
-            method: "POST",
+            method: method,
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${token}`

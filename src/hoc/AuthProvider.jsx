@@ -1,4 +1,5 @@
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
+import {useCallback} from "react";
 import settings from "../config";
 
 
@@ -61,7 +62,7 @@ export const AuthProvider = ({ children }) => {
         cb();
     }
 
-    const refreshToken = async () =>{
+    const refreshToken = useCallback(async () =>{
         localStorage.removeItem("access_token")
         const result = await sendAuthRequest('/auth/refresh')
         if (result.success){
@@ -71,7 +72,16 @@ export const AuthProvider = ({ children }) => {
         else{
             setToken(null);
         }
-    }
+    })
+
+    useEffect( () => {
+        refreshToken()
+        const intervalId = setInterval(refreshToken, 3 * 60 * 1000);
+        return () => clearInterval(intervalId);
+
+    }, [refreshToken])
+
+
 
     const value = {token, signIn, signUp, signOut, refreshToken};
     return (
