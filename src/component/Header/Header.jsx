@@ -5,6 +5,7 @@ import {useAuth} from "../../hook/useAuth";
 import {AvatarMenu} from "../avatarMenu/avatarMenu";
 import {useState, useEffect, useRef} from "react";
 import {useTranslation} from "react-i18next";
+import LanguageSwitcher from "../langaugeSwitcher/LanguageSwitcher";
 
 
 export function Header() {
@@ -35,22 +36,25 @@ export function Header() {
 
     return <div className={styles.header}>
         <h2><Link to="/">Trainer</Link></h2>
-        {token ?
-            <>
-                <div className={styles.menu}>
-                    <div><Link to="/learn">{t('learnWord')}</Link></div>
-                    <div><Link to="/train_list">{t('train')}</Link></div>
-                </div>
-                <div ref={buttonRef}>
-                    <UserButton
-                        onclick={() => {setMenu(!menu)}}/>
-                </div>
-                <AvatarMenu active={menu} ref={menuRef}/>
-            </>
-        :
-            <Link to="/sign_in" className={styles.sign_in}>
-                {t('signIn')}
-            </Link>
-        }
+        <div className={styles.menu}>
+            <div><Link to="/learn">{t('learnWord')}</Link></div>
+            <div><Link to="/train_list">{t('train')}</Link></div>
+        </div>
+        <div className="d-flex">
+            <LanguageSwitcher/>
+            {token ?
+                <>
+                    <div ref={buttonRef}>
+                        <UserButton
+                            onclick={() => {setMenu(!menu)}}/>
+                    </div>
+                    <AvatarMenu active={menu} ref={menuRef}/>
+                </>
+                :
+                <Link to="/sign_in" className={styles.sign_in}>
+                    {t('signIn')}
+                </Link>
+            }
+        </div>
     </div>
 }

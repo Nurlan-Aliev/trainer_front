@@ -19,6 +19,8 @@
 
 
 .sign_in{
+    text-align: center;
+    width: 90px;
     border: 2px solid #b8b8b8;
     padding: 10px;
     border-radius: 25px;
