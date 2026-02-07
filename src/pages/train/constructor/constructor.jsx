@@ -15,20 +15,18 @@ export function Constructor(){
     const [change, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState('');
     const [correctCount, setCorrectCount] = useState(0);
-    const [lngWord, setLngWord] = useState("");
-    
+
     const {words,
         count,
         currentWord,
         nextWord,
-        continueBtn} = useWords('/api/constructor')
+        continueBtn} = useWords('/constructor')
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        const response = await postRequest('/api/constructor',{
+        const response = await postRequest('/constructor',{
             "user_answer": inputValue.toLowerCase(),
-            "word_id": currentWord.word_id,
-            "language": `word_${i18n.language}`
+            "id": currentWord.id,
         },token )
         setCorrectAnswer(response.detail);
         setChange(true);
@@ -45,43 +43,48 @@ export function Constructor(){
     }
 
 
-    useEffect(() => {
-        if (i18n.language === 'ru' && currentWord){
-            setLngWord(currentWord.word_ru)
-        }else if(i18n.language === 'az' && currentWord){
-            setLngWord(currentWord.word_az)
-        }
-    })
+    if (!currentWord) {
+        return (
+            <TrainParent
+                child={<div>Загрузка...</div>}
+                count={0}
+                know_count={correctCount}
+                toLearn_count={0}
+                lenWord={0}
+                continueBtn={continueBtn}
+            />
+        );
+    }
 
     return (
         <TrainParent
             child={<form
                 className="d-flex align-items-center justify-content-between flex-column h-100 py-4"
                 autoComplete="off">
-                <div className="fs-1">{lngWord}</div>
+                <div className="fs-1">{currentWord.source_word}</div>
                 {!change ?
-                    <input
-                        type='text'
-                        name='word'
-                        placeholder={t('typeAnswerHere')}
-                        value={inputValue} className={styles.inputLine}
-                        onChange={(e) => setInputValue(e.target.value)}/>
-                    :
+                    <>
+                        <input
+                            type='text'
+                            name='word'
+                            placeholder={t('typeAnswerHere')}
+                            value={inputValue} className={styles.inputLine}
+                            onChange={(e) => setInputValue(e.target.value)}/>
 
+                        <button className="btn btn-primary" disabled={!inputValue}
+                                onClick={handleSubmit}>{t("check")}</button>
+                    </>
+                    :
+                    <>
                         <div className={styles.answer}>
                             <div className={styles.correct}>{correctAnswer}</div>
 
                             {correctAnswer !== inputValue.toLowerCase() && (
                             <div className={styles.wrong}>{inputValue}</div>
                             )}
-
                         </div>
-
-                }
-                {!change ?
-                    <button className="btn btn-primary" disabled={!inputValue}
-                            onClick={handleSubmit}>{t("check")}</button> :
-                    <button className="btn btn-primary" onClick={handleChange}>{t('nextWord')}</button>
+                        <button className="btn btn-primary" onClick={handleChange}>{t('nextWord')}</button>
+                    </>
                 }
             </form>}
             currentWord={currentWord}

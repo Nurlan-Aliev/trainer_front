@@ -13,7 +13,7 @@ export function LearnWords() {
         toLearn,
         currentWord,
         nextWord,
-        continueBtn} = useWords('/api/')
+        continueBtn} = useWords('/')
 
     return (
         <div className={styles.container}>

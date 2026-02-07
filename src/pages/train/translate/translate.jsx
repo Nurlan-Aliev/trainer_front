@@ -13,7 +13,7 @@ export function Translate(){
         count,
         currentWord,
         nextWord,
-        continueBtn} = useWords('/api/translate')
+        continueBtn} = useWords('/translate')
 
 
     return (
@@ -22,7 +22,7 @@ export function Translate(){
             <TranslateCard
                 word={currentWord}
                 nextWord={nextWord}
-                url='/api/translate'
+                url='/translate'
                 token={token}
                 countFunc={()=>setCorrectCount(correctCount+1)}
             />

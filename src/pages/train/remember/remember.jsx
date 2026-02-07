@@ -23,12 +23,12 @@ export function Remember(){
         count,
         currentWord,
         nextWord,
-        continueBtn} = useWords('/api/remember')
+        continueBtn} = useWords('/remember')
 
 
     const handleSubmit = async (e, remember) => {
         e.preventDefault();
-        const response =await postRequest('/api/remember',{
+        const response =await postRequest('/remember',{
             "word_id": currentWord.word_id,
             "remember": remember
         },token )

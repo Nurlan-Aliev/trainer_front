@@ -14,7 +14,7 @@ export function RevTranslate(){
         count,
         currentWord,
         nextWord,
-        continueBtn} = useWords('/api/rev_translate')
+        continueBtn} = useWords('/rev_translate')
 
 
     return (
@@ -23,7 +23,7 @@ export function RevTranslate(){
                 <TranslateCard
                     word={currentWord}
                     nextWord={nextWord}
-                    url='/api/rev_translate'
+                    url='/rev_translate'
                     token={token}
                     countFunc={()=>setCorrectCount(correctCount+1)}
                 />}

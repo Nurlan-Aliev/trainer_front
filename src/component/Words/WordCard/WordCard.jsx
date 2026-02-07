@@ -16,32 +16,24 @@ export function WordCard({word, onClick}) {
 
     const iKnowBtn = async () => {
         onClick(true)
-        await postRequest('/api/learned', word, token)
+        await postRequest('/learned', word, token)
     }
 
     const toLearnBtn = async () => {
         onClick(false)
-        await postRequest('/api/to_learn', word,token)
+        await postRequest('/to_learn', word,token)
     }
 
     useEffect(() => {
-        if (i18n.language === 'ru'){
-            setLngWord(word.word_ru)
-        }else if(i18n.language === 'az'){
-            setLngWord(word.word_az)
-        }
+        setLngWord(word.source_word)
     })
 
 
     return (
         <div className={styles.container}>
-            <Link className={styles.editIcon} to={`/edit/${word.id}`} >
-                <FiEdit/>
-            </Link>
-
             <div className={styles.wordContainer}>
                 <div className={styles.word}>
-                    { word.word_en.charAt(0).toUpperCase() + word.word_en.slice(1) }
+                    { word.target_word.charAt(0).toUpperCase() + word.target_word.slice(1) }
                 </div>
                 <div className={styles.translate}>
                     {lngWord.charAt(0).toUpperCase() + lngWord.slice(1)}

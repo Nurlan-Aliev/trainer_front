@@ -10,8 +10,8 @@ export function TranslateCard({word, nextWord, url, token, countFunc}) {
     const [inputValue, setInputValue] = useState("");
     const [chang, setChange] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(null);
-    const questionLanguage = url === '/api/translate' ? 'word_en' : `word_${i18n.language}`;
-    const answerLanguage = url === '/api/translate' ? `word_${i18n.language}` : 'word_en';
+    const questionLanguage = url === '/translate' ? 'word_en' : `word_${i18n.language}`;
+    const answerLanguage = url === '/translate' ? `word_${i18n.language}` : 'word_en';
 
     const handleSubmit = async () =>{
         const response = await postRequest(url,{

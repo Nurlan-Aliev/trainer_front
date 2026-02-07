@@ -19,7 +19,7 @@
     "vite": "^7.2.7"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview"
   }
