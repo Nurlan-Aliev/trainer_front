@@ -1,5 +1,5 @@
 .container{
-    border: 1px solid rgba(161, 161, 161, 0.46);
+    border: 1px solid var(--border-color);
     box-shadow: 0 0 10px 0 rgba(161, 161, 161, 0.46);
     border-radius: 10px;
     height: 300px;

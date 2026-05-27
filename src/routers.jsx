@@ -17,11 +17,13 @@ export function myRoutes() {
 
             <Route path="/sign_in" element={<SignIn />} />
             <Route path="/sign_up" element={<SignUp />} />
+
             <Route path="/learn" element={
                 <PrivateRoute >
                     <LearnWords />
                 </PrivateRoute>
             }/>
+
             <Route path="/train_list" element={
                 <PrivateRoute >
                     <TrainList />
@@ -33,16 +35,19 @@ export function myRoutes() {
                     <Constructor />
                 </PrivateRoute>
             }/>
+
             <Route path="/translate" element={
                 <PrivateRoute >
                     <Translate />
                 </PrivateRoute>
             }/>
+
             <Route path="/rev_translate" element={
                 <PrivateRoute >
                     <RevTranslate />
                 </PrivateRoute>
             }/>
+            
             <Route path="/remember" element={
                 <PrivateRoute >
                     <Remember />

@@ -21,8 +21,22 @@
 .sign_in{
     text-align: center;
     width: 90px;
-    border: 2px solid #b8b8b8;
+    border: 2px solid var(--border-color);
     padding: 10px;
     border-radius: 25px;
     font-weight: bold;
+}
+
+.user_button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: white;
+}
+
+.user_button img{
+    width: 30px;
+    height: 30px;
 }

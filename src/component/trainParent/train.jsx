@@ -5,17 +5,16 @@ import {Progress} from "/src/component/progress/progress"
 
 export function TrainParent({child, currentWord, count, know_count, toLearn_count, lenWord, continueBtn} ){
     return (
-        <div className={styles.flex_container}>
+        <div>
             {currentWord?
                 <div>
 
                     <Progress count={count} len={lenWord}/>
 
-                    <div className={styles.flex_container}>
-                        <div className={`${styles.container} ${styles.flex_container}`}>
-                            {child}
-                        </div>
+                    <div className={`${styles.container} justify-center align-items-center`}>
+                        {child}
                     </div>
+
                 </div>
                 :
                 <Success

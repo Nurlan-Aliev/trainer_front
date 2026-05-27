@@ -1,19 +1,18 @@
 import styles from './header.module.css';
-import UserButton from "../Buttons/userButton";
-import {Link} from "react-router-dom";
-import {useAuth} from "../../hook/useAuth";
-import {AvatarMenu} from "../avatarMenu/avatarMenu";
-import {useState, useEffect, useRef} from "react";
-import {useTranslation} from "react-i18next";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../hook/useAuth";
+import { AvatarMenu } from "../avatarMenu/avatarMenu";
+import { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../langaugeSwitcher/LanguageSwitcher";
 
 
 export function Header() {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const [menu, setMenu] = useState(false);
     const menuRef = useRef(null);
     const buttonRef = useRef(null);
-    const {token} = useAuth();
+    const { token } = useAuth();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -41,14 +40,16 @@ export function Header() {
             <div><Link to="/train_list">{t('train')}</Link></div>
         </div>
         <div className="d-flex">
-            <LanguageSwitcher/>
+            <LanguageSwitcher />
             {token ?
                 <>
                     <div ref={buttonRef}>
-                        <UserButton
-                            onclick={() => {setMenu(!menu)}}/>
+                        <button className={styles.user_button} onClick={() => {setMenu(!menu) }}>
+                            <img src='/assets/images/user.png' alt='user icon' />
+                        </button>
+
                     </div>
-                    <AvatarMenu active={menu} ref={menuRef}/>
+                    <AvatarMenu active={menu} ref={menuRef} />
                 </>
                 :
                 <Link to="/sign_in" className={styles.sign_in}>

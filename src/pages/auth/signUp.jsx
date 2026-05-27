@@ -1,51 +1,54 @@
 import styles from './auth.module.css'
-import {PasswordInput} from "../../component/authForm/inputComponents/passwordInput";
-import {SubmitButton} from "../../component/authForm/button/submitButton";
-import {InputData} from "../../component/authForm/inputComponents/inputComponent";
-import {useState} from "react";
-import {Navigate, useLocation, useNavigate} from "react-router-dom";
-import {useAuth} from "../../hook/useAuth";
-import {useTranslation} from "react-i18next";
+import { PasswordInput } from "../../component/inputComponents/passwordInput";
+import { InputData } from "../../component/inputComponents/inputComponent";
+import { useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hook/useAuth";
+import { useTranslation } from "react-i18next";
 import PushDemo from "../../component/notification/notification";
-import {usePushMessage} from "../../hook/usePushMessage";
+import { usePushMessage } from "../../hook/usePushMessage";
+
 
 
 export function SignUp() {
-    const {t} = useTranslation();
-
     const [name, setName] = useState("");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-    const {signUp, token} = useAuth();
+
+    const { t } = useTranslation();
+
+    const { signUp, token } = useAuth();
+    const { showNotification } = usePushMessage();
+
     const location = useLocation();
-    const fromPage =  location.state?.from?.pathname || '/';
-    const {showNotification} = usePushMessage();
+    const navigate = useNavigate();
+    const fromPage = location.state?.from?.pathname || '/';
+
 
     if (token) {
-        return <Navigate to={fromPage}  state={{from: location}}/>;
+        return <Navigate to={fromPage} state={{ from: location }} />;
     }
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const result = await signUp({name, login, password});
+        const result = await signUp({ name, login, password });
 
-        if (result.success){
+        if (result.success) {
             navigate(fromPage);
-        } else{
+
+        } else {
             showNotification(result.detail);
         }
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.container_sign_in}>
-
-                <PushDemo/>
+        <div>
+            <PushDemo />
+            <div className={styles.container}>
                 <h2 className={styles.title}>{t('signUp')}</h2>
 
-                <form className={styles.form_style} onSubmit={handleSubmit}>
+                <form className='w-5' onSubmit={handleSubmit}>
 
                     <InputData
                         name={'name'}
@@ -64,15 +67,12 @@ export function SignUp() {
                         placeholder={t('enterYourPassword')}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-
-                    <SubmitButton name={t('signUp')}/>
+                    <button type="submit" className={styles.submit_button}>{t('signUp')}</button>
                 </form>
 
                 <div className={styles.new_user}>
                     {t('haveAccount')}
-                    <button onClick={()=>navigate('/sign_in', {replace: true})} className={styles.sign_up_link}>
-                        {t('signIn')}
-                    </button>
+                    <a href="/sign_in" className={styles.sign_up_link}>{t('signIn')}</a>
                 </div>
             </div>
         </div>

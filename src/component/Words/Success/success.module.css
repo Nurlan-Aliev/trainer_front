@@ -5,7 +5,7 @@
     align-items: center;
     height: 350px;
     width: 450px;
-    border: 1px solid rgba(173, 173, 173, 0.65);
+    border: 1px solid var(--border-color);
     border-radius: 15px;
     padding: 60px 60px 40px 60px;
 }

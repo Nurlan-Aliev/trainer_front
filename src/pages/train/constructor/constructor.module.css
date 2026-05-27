@@ -1,7 +1,7 @@
 .inputLine{
     padding: 10px;
     font-size: 20px;
-    border: 1px solid rgba(161, 161, 161, 0.46);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     text-align: center;
 }

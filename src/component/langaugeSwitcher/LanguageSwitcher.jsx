@@ -5,7 +5,6 @@ import ReactCountryFlag from "react-country-flag";
 
 export default function LanguageSwitcher() {
     const {i18n } = useTranslation();
-    const [isOn, setIsOn] = useState(i18n.language === "ru");
 
 
     const handleChange = (e) => {
@@ -18,8 +17,8 @@ export default function LanguageSwitcher() {
                 value={i18n.language}
                 onChange={handleChange}
             >
-                <option value="ru"><ReactCountryFlag countryCode="RU" /> RU</option>
-                <option value="az"><ReactCountryFlag countryCode="AZ" /> AZ</option>
+                <option value="ru">{<ReactCountryFlag countryCode="RU" />}</option>
+                <option value="az">{<ReactCountryFlag countryCode="AZ" />}</option>
             </select>
 
         </div>

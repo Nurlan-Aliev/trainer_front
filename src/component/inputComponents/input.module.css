@@ -1,10 +1,11 @@
 .input_data_container{
     display: flex;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
 
     margin: 10px 0;
     height: 47px;
+    width: 100%;
 
     &:focus-within{
         border: 2px solid #1032d6;

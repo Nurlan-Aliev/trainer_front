@@ -1,12 +1,14 @@
 :root {
     --background-switch-color: #ffffff;
-    --black: black
+    --black: black;
+    --border-color: rgba(166, 166, 166, 0.612);
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-weight: normal;
 }
 
 body{
@@ -18,6 +20,45 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
+.justify-center{
+    display: flex;
+    justify-content: center;
+}
+
+.justify-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.align-items-center{
+    display: flex;
+    align-items: center;
+}
+
+.align-items-between{
+    display: flex;
+    align-items: space-between;
+}
+
+.flex-colomb{
+    display: flex;
+    flex-direction: column;
+}
+
+.w-4{
+    width: 300px;
+}
+
+.w-5{
+    width: 350px;
+}
+
+
+
+
+
+
 
 @media only screen and (max-width: 600px) {
     body{

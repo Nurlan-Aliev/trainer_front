@@ -26,6 +26,8 @@ export function Remember(){
         continueBtn} = useWords('/remember')
 
 
+
+
     const handleSubmit = async (e, remember) => {
         e.preventDefault();
         const response =await postRequest('/remember',{
@@ -50,12 +52,16 @@ export function Remember(){
             setLngWord(currentWord.word_az)
         }
     })
+    if (!currentWord){
+        return <div>'loading'</div>
+    }
+
 
     return (
         <TrainParent
             child={
                 <form className="d-flex align-items-center justify-content-between flex-column h-100 py-4">
-                    <div className="fs-1">{inEnWord}</div>
+                    <div className="fs-1">{currentWord.target_word}</div>
                     {!correctAnswer?
                         <div className="d-flex justify-content-center">
 

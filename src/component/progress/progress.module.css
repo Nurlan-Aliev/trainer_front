@@ -1,0 +1,19 @@
+.progress{
+    width: 100%;
+    margin: 5px 0;
+}
+
+.progress__bar{
+    border-radius: 5px;
+    height: 10px;
+    width: 100%;
+
+    border: 1px solid var(--border-color);
+}
+
+.fill{
+    border-radius: 5px;
+    z-index: -1;
+    height: 8px;
+    background-color: rgb(19, 107, 189);
+}

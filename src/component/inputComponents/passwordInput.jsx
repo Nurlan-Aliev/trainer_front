@@ -1,31 +1,29 @@
 import styles from "./input.module.css";
-import {useEyeState} from "../../../hook/useEyeState";
+import {useState} from "react";
+
+
 
 export function PasswordInput({placeholder, onChange}) {
+    const [type, setType] = useState(false);
 
-    const {openOneEye, closeBoth, openBoth, openOne, closeOne} = useEyeState()
 
     return (
-        <div className={styles.input_data_container} onFocus={closeBoth} onBlur={openBoth}>
+        <div className={styles.input_data_container}>
             <input
-                type={!openOneEye  ? 'password' : 'text'}
+                type={type ? "text" : "password"}
                 name="password"
                 className={styles.input_data}
                 placeholder={placeholder}
                 onChange={onChange}
                 required
-                onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                        openBoth();
-                    }
-                }}
+                
             />
 
             <img
                 src="/assets/images/eye/visible.png"
                 alt="eye icon"
                 className={styles.eye_image_pass}
-                onClick={() => {openOneEye? closeOne(): openOne() }}
+                onClick={() => setType(!type)}
                 onMouseDown={e => e.preventDefault()}/>
         </div>
     )
