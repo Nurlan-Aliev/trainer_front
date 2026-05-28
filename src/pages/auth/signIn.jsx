@@ -36,7 +36,7 @@ export function SignIn() {
             showNotification(result.detail)
         }
     }
-
+    console.log('API URL:', import.meta.env.VITE_API_URL)
 
     return (
         <div>
