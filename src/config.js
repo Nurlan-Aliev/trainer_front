@@ -1,6 +1,6 @@
 class Settings{
     constructor(){
-        this.baseURL = ''
+        this.baseURL = import.meta.env.VITE_API_URL
     }
 }
 
